@@ -1,0 +1,104 @@
+grammar demidov.projects.MiniJava with org.eclipse.xtext.common.Terminals
+
+generate miniJava 'http://www.projects.demidov/MiniJava'
+
+Program:
+	classDeclarations += MainClass ( classDeclarations += ClassDeclaration )*
+	;
+
+MainClass returns ClassDecl:
+	'class' name = ID '{' 'public' 'static' 'void' 'main' '(' 'String' '[' ']' ID ')' '{'
+			statement = Statement 
+		'}'
+    '}'
+	;
+
+ClassDeclaration returns ClassDecl:
+	'class' name = ID ( 'extends' extendedClass = [ClassDecl | ID] )? '{'
+		( varDeclarations += VarDeclaration )*
+		( methodDeclarations += MethodDeclaration )*
+	'}'
+	;
+	
+Type:
+	'int' typeName = '[' ']'
+	|	typeName = 'int'
+	|	typeName = 'boolean' 
+	|	classDecl = [ClassDecl | ID]
+	;
+	
+VarDeclaration:
+	variable = Variable ';'
+	;
+	
+Variable:
+	variableType = Type name = ID
+	;
+	
+MethodDeclaration returns Method:
+	'public' methodType = Type name = ID '(' ( formalVarDeclarations += Variable ( ',' formalVarDeclarations += Variable )* )? ')' '{'
+		( localVarDeclarations += VarDeclaration )* 
+		( statements += Statement )*
+		'return' returnExpression = Expression ';'
+	'}'
+	;
+	
+Statement:
+	statementType = '{' ( statements += Statement )* '}'
+	|	statementType = 'if' '(' firstExpression = Expression ')' statements += Statement 'else' statements += Statement
+	|	statementType = 'while' '(' firstExpression = Expression ')' statements += Statement
+	|	statementType = 'System.out.println' '(' firstExpression = Expression ')' ';'
+	|	variable = [Variable | ID] statementType = '=' firstExpression = Expression ';'
+	|	variable = [Variable | ID] isArrayElementAssignment?='[' firstExpression = Expression ']' 
+			statementType = '=' secondExpression = Expression ';'
+	;
+
+Expression returns Expr:
+	Addition ({Expression.left=current} expressionType = '<' right=Expression)?
+	;
+	
+Addition returns Expr:
+	Multiplication ({Addition.left=current} expressionType = ('+' | '-') right=Multiplication)*
+	;
+  
+Multiplication returns Expr:
+	NegationOrPointExpression ({Multiplication.left=current} expressionType = ('*' | '&&') right=NegationOrPointExpression)*
+	;
+	
+NegationOrPointExpression returns Expr:
+	Negation
+	| Point
+	;
+  
+Negation returns Expr:
+	expressionType = '!' right = Point
+	;
+  
+Point returns Expr:
+	SquareBrackets ( {Point.left=current} expressionType = '.' right = SquareBrackets )*
+	;
+  
+SquareBrackets returns Expr:
+	Primary ({SquareBrackets.left=current} expressionType = '[' right=Primary ']')?
+	;
+  
+Primary returns Expr:
+	expressionType = 'true'
+	|	expressionType = 'false'
+	|	expressionType = 'this'
+	|	expressionType = 'new' 'int' '[' expression = Expression ']'
+	|	expressionType = 'new' type = Type '(' ')'
+	|	expressionType = '(' expression = Expression ')'
+	|	expressionType = 'length'
+	|	variable = [Variable | ID]
+	|	methodCall = MethodCall
+	|	number = NumberValue
+	;
+	
+MethodCall:
+	method = [Method | ID] '(' ( parameters += Expression ( ',' parameters += Expression )* )? ')'
+	;
+	
+NumberValue:
+	value = INT
+	;

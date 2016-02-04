@@ -1,0 +1,3 @@
+include 'demidov.projects.minijava'
+include 'demidov.projects.minijava.ide'
+include 'demidov.projects.minijava.tests'
