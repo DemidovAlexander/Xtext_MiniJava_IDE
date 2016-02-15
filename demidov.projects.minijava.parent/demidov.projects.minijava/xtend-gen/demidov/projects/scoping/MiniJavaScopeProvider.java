@@ -68,37 +68,65 @@ public class MiniJavaScopeProvider extends AbstractMiniJavaScopeProvider {
     }
     if (_and_1) {
       final Point pointExpression = EcoreUtil2.<Point>getContainerOfType(context, Point.class);
-      Expr _left = pointExpression.getLeft();
-      Type _expressionType = CommonUtils.getExpressionType(_left);
-      final ClassDecl classDecl = _expressionType.getClassDecl();
+      boolean _or = false;
+      boolean _equals_2 = Objects.equal(pointExpression, null);
+      if (_equals_2) {
+        _or = true;
+      } else {
+        Expr _left = pointExpression.getLeft();
+        boolean _equals_3 = Objects.equal(_left, null);
+        _or = _equals_3;
+      }
+      if (_or) {
+        ArrayList<EObject> _arrayList = new ArrayList<EObject>();
+        return Scopes.scopeFor(_arrayList);
+      }
+      Expr _left_1 = pointExpression.getLeft();
+      final Type exprType = CommonUtils.getExpressionType(_left_1);
+      boolean _equals_4 = Objects.equal(exprType, null);
+      if (_equals_4) {
+        ArrayList<EObject> _arrayList_1 = new ArrayList<EObject>();
+        return Scopes.scopeFor(_arrayList_1);
+      }
+      final ClassDecl classDecl = exprType.getClassDecl();
+      boolean _equals_5 = Objects.equal(classDecl, null);
+      if (_equals_5) {
+        ArrayList<EObject> _arrayList_2 = new ArrayList<EObject>();
+        return Scopes.scopeFor(_arrayList_2);
+      }
       HashSet<Method> _methodsForClass = CommonUtils.getMethodsForClass(classDecl);
       return Scopes.scopeFor(_methodsForClass);
     }
-    boolean _or = false;
+    boolean _or_1 = false;
     boolean _and_2 = false;
     if (!(context instanceof Statement)) {
       _and_2 = false;
     } else {
-      boolean _equals_2 = Objects.equal(reference, MiniJavaPackage.Literals.STATEMENT__VARIABLE);
-      _and_2 = _equals_2;
+      boolean _equals_6 = Objects.equal(reference, MiniJavaPackage.Literals.STATEMENT__VARIABLE);
+      _and_2 = _equals_6;
     }
     if (_and_2) {
-      _or = true;
+      _or_1 = true;
     } else {
       boolean _and_3 = false;
       if (!(context instanceof Expr)) {
         _and_3 = false;
       } else {
-        boolean _equals_3 = Objects.equal(reference, MiniJavaPackage.Literals.EXPR__VARIABLE);
-        _and_3 = _equals_3;
+        boolean _equals_7 = Objects.equal(reference, MiniJavaPackage.Literals.EXPR__VARIABLE);
+        _and_3 = _equals_7;
       }
-      _or = _and_3;
+      _or_1 = _and_3;
     }
-    if (_or) {
+    if (_or_1) {
       HashSet<String> variablesNames = new HashSet<String>();
       ArrayList<Variable> variablesCandidates = new ArrayList<Variable>();
       final Method method = EcoreUtil2.<Method>getContainerOfType(context, Method.class);
       ClassDecl classDecl_1 = EcoreUtil2.<ClassDecl>getContainerOfType(context, ClassDecl.class);
+      boolean _equals_8 = Objects.equal(classDecl_1, null);
+      if (_equals_8) {
+        ArrayList<EObject> _arrayList_3 = new ArrayList<EObject>();
+        return Scopes.scopeFor(_arrayList_3);
+      }
       boolean _and_4 = false;
       boolean _notEquals = (!Objects.equal(method, null));
       if (!_notEquals) {

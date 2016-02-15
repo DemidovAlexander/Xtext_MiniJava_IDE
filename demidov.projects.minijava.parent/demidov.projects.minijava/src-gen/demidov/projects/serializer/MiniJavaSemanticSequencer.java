@@ -8,6 +8,7 @@ import demidov.projects.miniJava.Addition;
 import demidov.projects.miniJava.ClassDecl;
 import demidov.projects.miniJava.Expr;
 import demidov.projects.miniJava.Expression;
+import demidov.projects.miniJava.MainMethod;
 import demidov.projects.miniJava.Method;
 import demidov.projects.miniJava.MethodCall;
 import demidov.projects.miniJava.MiniJavaPackage;
@@ -60,7 +61,11 @@ public class MiniJavaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				}
 				else break;
 			case MiniJavaPackage.EXPR:
-				if (rule == grammarAccess.getNegationRule()) {
+				if (rule == grammarAccess.getMethodCallExprRule()) {
+					sequence_MethodCallExpr(context, (Expr) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getNegationRule()) {
 					sequence_Negation(context, (Expr) semanticObject); 
 					return; 
 				}
@@ -85,6 +90,9 @@ public class MiniJavaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				else break;
 			case MiniJavaPackage.EXPRESSION:
 				sequence_Expression(context, (Expression) semanticObject); 
+				return; 
+			case MiniJavaPackage.MAIN_METHOD:
+				sequence_MainMethod(context, (MainMethod) semanticObject); 
 				return; 
 			case MiniJavaPackage.METHOD:
 				sequence_MethodDeclaration(context, (Method) semanticObject); 
@@ -180,19 +188,49 @@ public class MiniJavaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     MainClass returns ClassDecl
 	 *
 	 * Constraint:
-	 *     (name=ID statement=Statement)
+	 *     (name=ID mainMethod=MainMethod)
 	 */
 	protected void sequence_MainClass(ISerializationContext context, ClassDecl semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, MiniJavaPackage.Literals.CLASS_DECL__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MiniJavaPackage.Literals.CLASS_DECL__NAME));
-			if (transientValues.isValueTransient(semanticObject, MiniJavaPackage.Literals.CLASS_DECL__STATEMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MiniJavaPackage.Literals.CLASS_DECL__STATEMENT));
+			if (transientValues.isValueTransient(semanticObject, MiniJavaPackage.Literals.CLASS_DECL__MAIN_METHOD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MiniJavaPackage.Literals.CLASS_DECL__MAIN_METHOD));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getMainClassAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getMainClassAccess().getStatementStatementParserRuleCall_14_0(), semanticObject.getStatement());
+		feeder.accept(grammarAccess.getMainClassAccess().getMainMethodMainMethodParserRuleCall_3_0(), semanticObject.getMainMethod());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     MainMethod returns MainMethod
+	 *
+	 * Constraint:
+	 *     statement=Statement
+	 */
+	protected void sequence_MainMethod(ISerializationContext context, MainMethod semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MiniJavaPackage.Literals.MAIN_METHOD__STATEMENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MiniJavaPackage.Literals.MAIN_METHOD__STATEMENT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMainMethodAccess().getStatementStatementParserRuleCall_11_0(), semanticObject.getStatement());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     MethodCallExpr returns Expr
+	 *
+	 * Constraint:
+	 *     (expressionType='length' | methodCall=MethodCall)
+	 */
+	protected void sequence_MethodCallExpr(ISerializationContext context, Expr semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -219,7 +257,7 @@ public class MiniJavaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         (formalVarDeclarations+=Variable formalVarDeclarations+=Variable*)? 
 	 *         localVarDeclarations+=VarDeclaration* 
 	 *         statements+=Statement* 
-	 *         returnExpression=Expression
+	 *         returnExpression=Expression?
 	 *     )
 	 */
 	protected void sequence_MethodDeclaration(ISerializationContext context, Method semanticObject) {
@@ -284,9 +322,7 @@ public class MiniJavaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         (expressionType='new' expression=Expression) | 
 	 *         (expressionType='new' type=Type) | 
 	 *         (expressionType='(' expression=Expression) | 
-	 *         expressionType='length' | 
 	 *         variable=[Variable|ID] | 
-	 *         methodCall=MethodCall | 
 	 *         number=NumberValue
 	 *     )
 	 */
@@ -326,7 +362,7 @@ public class MiniJavaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Point.Point_1_0 returns Point
 	 *
 	 * Constraint:
-	 *     (left=Point_Point_1_0 expressionType='.' right=SquareBrackets)
+	 *     (left=Point_Point_1_0 expressionType='.' right=MethodCallExpr)
 	 */
 	protected void sequence_Point(ISerializationContext context, Point semanticObject) {
 		if (errorAcceptor != null) {
@@ -340,7 +376,7 @@ public class MiniJavaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getPointAccess().getPointLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getPointAccess().getExpressionTypeFullStopKeyword_1_1_0(), semanticObject.getExpressionType());
-		feeder.accept(grammarAccess.getPointAccess().getRightSquareBracketsParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getPointAccess().getRightMethodCallExprParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -361,9 +397,7 @@ public class MiniJavaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         (expressionType='new' expression=Expression) | 
 	 *         (expressionType='new' type=Type) | 
 	 *         (expressionType='(' expression=Expression) | 
-	 *         expressionType='length' | 
 	 *         variable=[Variable|ID] | 
-	 *         methodCall=MethodCall | 
 	 *         number=NumberValue
 	 *     )
 	 */

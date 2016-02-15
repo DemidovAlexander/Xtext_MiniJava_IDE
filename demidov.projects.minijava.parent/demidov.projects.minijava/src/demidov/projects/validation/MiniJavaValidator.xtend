@@ -27,6 +27,7 @@ class MiniJavaValidator extends AbstractMiniJavaValidator {
 	public static val DUPLICATE_NAMES = 'duplicateNames'
 	public static val WRONG_PARAMETERS = 'wrongParameters'
 	public static val WRONG_RETURN = 'wrongReturn'
+	public static val NO_RETURN = 'noReturn'
 	public static val NOT_ARRAY = 'notArray'
 	public static val NOT_INT = 'notInt'
 	public static val NOT_BOOLEAN = 'notBoolean'	
@@ -69,6 +70,22 @@ class MiniJavaValidator extends AbstractMiniJavaValidator {
         				
 				error('Duplicate names of the classes',
 					MiniJavaPackage.Literals.CLASS_DECL__NAME,
+					DUPLICATE_NAMES);
+			}
+		}
+	}
+	
+	// Duplicate names of the classes
+	@Check(FAST)
+	def checkDuplicateMethodNames(Method method) {
+		val classDecl = EcoreUtil2.getContainerOfType(method, ClassDecl);
+
+        for (currentMethod : classDecl.methodDeclarations) {
+        	if ( method.name.equals(currentMethod.name)
+        		&& method != currentMethod ) {
+        				
+				error('Duplicate names of the methods',
+					MiniJavaPackage.Literals.METHOD__NAME,
 					DUPLICATE_NAMES);
 			}
 		}
@@ -149,10 +166,21 @@ class MiniJavaValidator extends AbstractMiniJavaValidator {
 						MiniJavaPackage.Literals.METHOD_CALL__METHOD,
 							TYPE_MISMATCH);					
 					return;
-				}			
+				}	
 			}
 		}
 	}
+	
+	// No return statement for the method
+	@Check(FAST)
+	def checkReturnExistance(Method method) {
+		if (method.returnExpression == null) {
+					
+			error('No return statement for the method',
+				MiniJavaPackage.Literals.METHOD__RETURN_EXPRESSION,
+				NO_RETURN);
+		}
+	}	
 		
 	// Wrong type of the return expression
 	@Check(FAST)

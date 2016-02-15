@@ -52,8 +52,24 @@ class MiniJavaScopeProvider extends AbstractMiniJavaScopeProvider {
 		
 		if(context instanceof MethodCall && reference == MiniJavaPackage.Literals.METHOD_CALL__METHOD) {    	
 			val pointExpression = EcoreUtil2.getContainerOfType(context, Point);
-							
-			val classDecl = CommonUtils::getExpressionType(pointExpression.left).classDecl;
+			
+			if ( pointExpression == null
+				|| pointExpression.left == null ) {
+					   	
+        		return Scopes.scopeFor(new ArrayList<EObject>());
+        	}
+        	
+        	val exprType = CommonUtils::getExpressionType(pointExpression.left)
+			
+			if (exprType == null) {        	
+        		return Scopes.scopeFor(new ArrayList<EObject>());
+        	}
+			
+			val classDecl = exprType.classDecl;
+        	
+        	if (classDecl == null) {        	
+        		return Scopes.scopeFor(new ArrayList<EObject>());
+        	}
         	
         	return Scopes.scopeFor(CommonUtils::getMethodsForClass(classDecl));
 		}
@@ -66,6 +82,10 @@ class MiniJavaScopeProvider extends AbstractMiniJavaScopeProvider {
 			
 			val method = EcoreUtil2.getContainerOfType(context, Method);
 			var classDecl = EcoreUtil2.getContainerOfType(context, ClassDecl);
+			
+			if (classDecl == null) {
+				return Scopes.scopeFor(new ArrayList<EObject>());
+			}
 			
 			if ( method != null && classDecl.methodDeclarations.contains(method) ) {
 					   	        	

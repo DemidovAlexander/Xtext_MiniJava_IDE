@@ -11,10 +11,13 @@
     </genClasses>
     <genClasses ecoreClass="MiniJava.ecore#//ClassDecl">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MiniJava.ecore#//ClassDecl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniJava.ecore#//ClassDecl/statement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniJava.ecore#//ClassDecl/mainMethod"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MiniJava.ecore#//ClassDecl/extendedClass"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniJava.ecore#//ClassDecl/varDeclarations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniJava.ecore#//ClassDecl/methodDeclarations"/>
+    </genClasses>
+    <genClasses ecoreClass="MiniJava.ecore#//MainMethod">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniJava.ecore#//MainMethod/statement"/>
     </genClasses>
     <genClasses ecoreClass="MiniJava.ecore#//Type">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MiniJava.ecore#//Type/typeName"/>
@@ -49,8 +52,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniJava.ecore#//Expr/expression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniJava.ecore#//Expr/type"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MiniJava.ecore#//Expr/variable"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniJava.ecore#//Expr/methodCall"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniJava.ecore#//Expr/number"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniJava.ecore#//Expr/methodCall"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniJava.ecore#//Expr/left"/>
     </genClasses>
     <genClasses ecoreClass="MiniJava.ecore#//MethodCall">

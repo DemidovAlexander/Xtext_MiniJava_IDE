@@ -3,9 +3,17 @@
  */
 package demidov.projects.ui;
 
+import com.google.inject.Binder;
+import com.google.inject.binder.AnnotatedBindingBuilder;
+import demidov.projects.syntaxcoloring.MiniJavaHighlightingConfiguration;
+import demidov.projects.syntaxcoloring.MiniJavaSemanticHighlightingCalculator;
+import demidov.projects.syntaxcoloring.MiniJavaTokenToAttributeIdMapper;
 import demidov.projects.ui.AbstractMiniJavaUiModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
+import org.eclipse.xtext.ide.editor.syntaxcoloring.DefaultSemanticHighlightingCalculator;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration;
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -13,6 +21,17 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class MiniJavaUiModule extends AbstractMiniJavaUiModule {
+  @Override
+  public void configure(final Binder binder) {
+    super.configure(binder);
+    AnnotatedBindingBuilder<DefaultHighlightingConfiguration> _bind = binder.<DefaultHighlightingConfiguration>bind(DefaultHighlightingConfiguration.class);
+    _bind.to(MiniJavaHighlightingConfiguration.class);
+    AnnotatedBindingBuilder<DefaultAntlrTokenToAttributeIdMapper> _bind_1 = binder.<DefaultAntlrTokenToAttributeIdMapper>bind(DefaultAntlrTokenToAttributeIdMapper.class);
+    _bind_1.to(MiniJavaTokenToAttributeIdMapper.class);
+    AnnotatedBindingBuilder<DefaultSemanticHighlightingCalculator> _bind_2 = binder.<DefaultSemanticHighlightingCalculator>bind(DefaultSemanticHighlightingCalculator.class);
+    _bind_2.to(MiniJavaSemanticHighlightingCalculator.class);
+  }
+  
   public MiniJavaUiModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }

@@ -4,9 +4,9 @@
 package demidov.projects.miniJava.impl;
 
 import demidov.projects.miniJava.ClassDecl;
+import demidov.projects.miniJava.MainMethod;
 import demidov.projects.miniJava.Method;
 import demidov.projects.miniJava.MiniJavaPackage;
-import demidov.projects.miniJava.Statement;
 import demidov.projects.miniJava.VarDeclaration;
 
 import java.util.Collection;
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link demidov.projects.miniJava.impl.ClassDeclImpl#getName <em>Name</em>}</li>
- *   <li>{@link demidov.projects.miniJava.impl.ClassDeclImpl#getStatement <em>Statement</em>}</li>
+ *   <li>{@link demidov.projects.miniJava.impl.ClassDeclImpl#getMainMethod <em>Main Method</em>}</li>
  *   <li>{@link demidov.projects.miniJava.impl.ClassDeclImpl#getExtendedClass <em>Extended Class</em>}</li>
  *   <li>{@link demidov.projects.miniJava.impl.ClassDeclImpl#getVarDeclarations <em>Var Declarations</em>}</li>
  *   <li>{@link demidov.projects.miniJava.impl.ClassDeclImpl#getMethodDeclarations <em>Method Declarations</em>}</li>
@@ -65,14 +65,14 @@ public class ClassDeclImpl extends MinimalEObjectImpl.Container implements Class
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getStatement() <em>Statement</em>}' containment reference.
+   * The cached value of the '{@link #getMainMethod() <em>Main Method</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getStatement()
+   * @see #getMainMethod()
    * @generated
    * @ordered
    */
-  protected Statement statement;
+  protected MainMethod mainMethod;
 
   /**
    * The cached value of the '{@link #getExtendedClass() <em>Extended Class</em>}' reference.
@@ -153,9 +153,9 @@ public class ClassDeclImpl extends MinimalEObjectImpl.Container implements Class
    * <!-- end-user-doc -->
    * @generated
    */
-  public Statement getStatement()
+  public MainMethod getMainMethod()
   {
-    return statement;
+    return mainMethod;
   }
 
   /**
@@ -163,13 +163,13 @@ public class ClassDeclImpl extends MinimalEObjectImpl.Container implements Class
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetStatement(Statement newStatement, NotificationChain msgs)
+  public NotificationChain basicSetMainMethod(MainMethod newMainMethod, NotificationChain msgs)
   {
-    Statement oldStatement = statement;
-    statement = newStatement;
+    MainMethod oldMainMethod = mainMethod;
+    mainMethod = newMainMethod;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MiniJavaPackage.CLASS_DECL__STATEMENT, oldStatement, newStatement);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MiniJavaPackage.CLASS_DECL__MAIN_METHOD, oldMainMethod, newMainMethod);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -180,20 +180,20 @@ public class ClassDeclImpl extends MinimalEObjectImpl.Container implements Class
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setStatement(Statement newStatement)
+  public void setMainMethod(MainMethod newMainMethod)
   {
-    if (newStatement != statement)
+    if (newMainMethod != mainMethod)
     {
       NotificationChain msgs = null;
-      if (statement != null)
-        msgs = ((InternalEObject)statement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MiniJavaPackage.CLASS_DECL__STATEMENT, null, msgs);
-      if (newStatement != null)
-        msgs = ((InternalEObject)newStatement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MiniJavaPackage.CLASS_DECL__STATEMENT, null, msgs);
-      msgs = basicSetStatement(newStatement, msgs);
+      if (mainMethod != null)
+        msgs = ((InternalEObject)mainMethod).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MiniJavaPackage.CLASS_DECL__MAIN_METHOD, null, msgs);
+      if (newMainMethod != null)
+        msgs = ((InternalEObject)newMainMethod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MiniJavaPackage.CLASS_DECL__MAIN_METHOD, null, msgs);
+      msgs = basicSetMainMethod(newMainMethod, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MiniJavaPackage.CLASS_DECL__STATEMENT, newStatement, newStatement));
+      eNotify(new ENotificationImpl(this, Notification.SET, MiniJavaPackage.CLASS_DECL__MAIN_METHOD, newMainMethod, newMainMethod));
   }
 
   /**
@@ -277,8 +277,8 @@ public class ClassDeclImpl extends MinimalEObjectImpl.Container implements Class
   {
     switch (featureID)
     {
-      case MiniJavaPackage.CLASS_DECL__STATEMENT:
-        return basicSetStatement(null, msgs);
+      case MiniJavaPackage.CLASS_DECL__MAIN_METHOD:
+        return basicSetMainMethod(null, msgs);
       case MiniJavaPackage.CLASS_DECL__VAR_DECLARATIONS:
         return ((InternalEList<?>)getVarDeclarations()).basicRemove(otherEnd, msgs);
       case MiniJavaPackage.CLASS_DECL__METHOD_DECLARATIONS:
@@ -299,8 +299,8 @@ public class ClassDeclImpl extends MinimalEObjectImpl.Container implements Class
     {
       case MiniJavaPackage.CLASS_DECL__NAME:
         return getName();
-      case MiniJavaPackage.CLASS_DECL__STATEMENT:
-        return getStatement();
+      case MiniJavaPackage.CLASS_DECL__MAIN_METHOD:
+        return getMainMethod();
       case MiniJavaPackage.CLASS_DECL__EXTENDED_CLASS:
         if (resolve) return getExtendedClass();
         return basicGetExtendedClass();
@@ -326,8 +326,8 @@ public class ClassDeclImpl extends MinimalEObjectImpl.Container implements Class
       case MiniJavaPackage.CLASS_DECL__NAME:
         setName((String)newValue);
         return;
-      case MiniJavaPackage.CLASS_DECL__STATEMENT:
-        setStatement((Statement)newValue);
+      case MiniJavaPackage.CLASS_DECL__MAIN_METHOD:
+        setMainMethod((MainMethod)newValue);
         return;
       case MiniJavaPackage.CLASS_DECL__EXTENDED_CLASS:
         setExtendedClass((ClassDecl)newValue);
@@ -357,8 +357,8 @@ public class ClassDeclImpl extends MinimalEObjectImpl.Container implements Class
       case MiniJavaPackage.CLASS_DECL__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case MiniJavaPackage.CLASS_DECL__STATEMENT:
-        setStatement((Statement)null);
+      case MiniJavaPackage.CLASS_DECL__MAIN_METHOD:
+        setMainMethod((MainMethod)null);
         return;
       case MiniJavaPackage.CLASS_DECL__EXTENDED_CLASS:
         setExtendedClass((ClassDecl)null);
@@ -385,8 +385,8 @@ public class ClassDeclImpl extends MinimalEObjectImpl.Container implements Class
     {
       case MiniJavaPackage.CLASS_DECL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case MiniJavaPackage.CLASS_DECL__STATEMENT:
-        return statement != null;
+      case MiniJavaPackage.CLASS_DECL__MAIN_METHOD:
+        return mainMethod != null;
       case MiniJavaPackage.CLASS_DECL__EXTENDED_CLASS:
         return extendedClass != null;
       case MiniJavaPackage.CLASS_DECL__VAR_DECLARATIONS:

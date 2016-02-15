@@ -42,6 +42,15 @@ public interface MiniJavaFactory extends EFactory
   ClassDecl createClassDecl();
 
   /**
+   * Returns a new object of class '<em>Main Method</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Main Method</em>'.
+   * @generated
+   */
+  MainMethod createMainMethod();
+
+  /**
    * Returns a new object of class '<em>Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

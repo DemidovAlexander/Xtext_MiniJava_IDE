@@ -4,10 +4,25 @@
 package demidov.projects.ui
 
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import demidov.projects.syntaxcoloring.MiniJavaHighlightingConfiguration
+
+import com.google.inject.Binder
+import demidov.projects.syntaxcoloring.MiniJavaSemanticHighlightingCalculator
+import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration
+import org.eclipse.xtext.ide.editor.syntaxcoloring.DefaultSemanticHighlightingCalculator
+import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper
+import demidov.projects.syntaxcoloring.MiniJavaTokenToAttributeIdMapper
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
  */
 @FinalFieldsConstructor
 class MiniJavaUiModule extends AbstractMiniJavaUiModule {
+	
+	override configure(Binder binder) {
+		super.configure(binder);
+		binder.bind(DefaultHighlightingConfiguration).to(MiniJavaHighlightingConfiguration);
+		binder.bind(DefaultAntlrTokenToAttributeIdMapper).to(MiniJavaTokenToAttributeIdMapper);
+		binder.bind(DefaultSemanticHighlightingCalculator).to(MiniJavaSemanticHighlightingCalculator);
+	}
 }

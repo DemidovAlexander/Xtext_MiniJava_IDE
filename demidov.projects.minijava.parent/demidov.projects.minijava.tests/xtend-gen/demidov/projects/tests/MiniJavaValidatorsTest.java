@@ -137,6 +137,49 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
   }
   
   @Test
+  public void testDuplicateMethodNamesChecking() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("class A {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("public int b() {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("return 0;");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("public boolean b() {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("return true;");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      String _plus = (MiniJavaValidatorsTest.MAIN_CLASS_CODE + _builder);
+      final Program model = this.parser.parse(_plus);
+      EList<ClassDecl> _classDeclarations = model.getClassDeclarations();
+      final ClassDecl classDecl = _classDeclarations.get(1);
+      MiniJavaValidator _validator = this.tester.validator();
+      EList<Method> _methodDeclarations = classDecl.getMethodDeclarations();
+      Method _get = _methodDeclarations.get(0);
+      _validator.checkDuplicateMethodNames(_get);
+      AssertableDiagnostics _diagnose = this.tester.diagnose();
+      _diagnose.assertError("duplicateNames");
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testDuplicateClassVariablesNamesChecking() {
     try {
       StringConcatenation _builder = new StringConcatenation();
@@ -603,6 +646,29 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
   }
   
   @Test
+  public void testReturnExistanceChecking() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("class A {\t\t\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("public int method(int bar) {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      String _plus = (MiniJavaValidatorsTest.MAIN_CLASS_CODE + _builder);
+      final Program model = this.parser.parse(_plus);
+      AssertableDiagnostics _validate = this.tester.validate(model);
+      _validate.assertError("noReturn");
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testReturnExpressionChecking1() {
     try {
       StringConcatenation _builder = new StringConcatenation();
@@ -719,7 +785,7 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
       _builder.append("\t\t");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("returns 0;");
+      _builder.append("return 0;");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("}");
@@ -758,7 +824,7 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
       _builder.append("\t\t");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("returns 0;");
+      _builder.append("return 0;");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("}");
@@ -1539,45 +1605,6 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
       _builder.append("\t\t");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("a = b.(length);\t\t\t\t");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("return 0;");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      String _plus = (MiniJavaValidatorsTest.MAIN_CLASS_CODE + _builder);
-      final Program model = this.parser.parse(_plus);
-      AssertableDiagnostics _validate = this.tester.validate(model);
-      _validate.assertError("wrongMethod");
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
-  @Test
-  public void testPointExpressionChecking4() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("class A {");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("public int method() {");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("int a;");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("int[] b;");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("a = b.length;\t\t\t\t");
       _builder.newLine();
       _builder.append("\t\t");
@@ -1600,7 +1627,7 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
   }
   
   @Test
-  public void testPointExpressionChecking5() {
+  public void testPointExpressionChecking4() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("class A {");
@@ -1653,7 +1680,7 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
   }
   
   @Test
-  public void testPointExpressionChecking6() {
+  public void testPointExpressionChecking5() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("class A {");
@@ -1706,7 +1733,7 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
   }
   
   @Test
-  public void testPointExpressionChecking7() {
+  public void testPointExpressionChecking6() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("class A {");

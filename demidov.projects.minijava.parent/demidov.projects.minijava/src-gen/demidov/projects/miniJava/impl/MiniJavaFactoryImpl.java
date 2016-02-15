@@ -67,6 +67,7 @@ public class MiniJavaFactoryImpl extends EFactoryImpl implements MiniJavaFactory
     {
       case MiniJavaPackage.PROGRAM: return createProgram();
       case MiniJavaPackage.CLASS_DECL: return createClassDecl();
+      case MiniJavaPackage.MAIN_METHOD: return createMainMethod();
       case MiniJavaPackage.TYPE: return createType();
       case MiniJavaPackage.VAR_DECLARATION: return createVarDeclaration();
       case MiniJavaPackage.VARIABLE: return createVariable();
@@ -105,6 +106,17 @@ public class MiniJavaFactoryImpl extends EFactoryImpl implements MiniJavaFactory
   {
     ClassDeclImpl classDecl = new ClassDeclImpl();
     return classDecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MainMethod createMainMethod()
+  {
+    MainMethodImpl mainMethod = new MainMethodImpl();
+    return mainMethod;
   }
 
   /**

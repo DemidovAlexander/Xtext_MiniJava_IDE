@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link demidov.projects.miniJava.ClassDecl#getName <em>Name</em>}</li>
- *   <li>{@link demidov.projects.miniJava.ClassDecl#getStatement <em>Statement</em>}</li>
+ *   <li>{@link demidov.projects.miniJava.ClassDecl#getMainMethod <em>Main Method</em>}</li>
  *   <li>{@link demidov.projects.miniJava.ClassDecl#getExtendedClass <em>Extended Class</em>}</li>
  *   <li>{@link demidov.projects.miniJava.ClassDecl#getVarDeclarations <em>Var Declarations</em>}</li>
  *   <li>{@link demidov.projects.miniJava.ClassDecl#getMethodDeclarations <em>Method Declarations</em>}</li>
@@ -56,30 +56,30 @@ public interface ClassDecl extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Statement</b></em>' containment reference.
+   * Returns the value of the '<em><b>Main Method</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Statement</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Main Method</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Statement</em>' containment reference.
-   * @see #setStatement(Statement)
-   * @see demidov.projects.miniJava.MiniJavaPackage#getClassDecl_Statement()
+   * @return the value of the '<em>Main Method</em>' containment reference.
+   * @see #setMainMethod(MainMethod)
+   * @see demidov.projects.miniJava.MiniJavaPackage#getClassDecl_MainMethod()
    * @model containment="true"
    * @generated
    */
-  Statement getStatement();
+  MainMethod getMainMethod();
 
   /**
-   * Sets the value of the '{@link demidov.projects.miniJava.ClassDecl#getStatement <em>Statement</em>}' containment reference.
+   * Sets the value of the '{@link demidov.projects.miniJava.ClassDecl#getMainMethod <em>Main Method</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Statement</em>' containment reference.
-   * @see #getStatement()
+   * @param value the new value of the '<em>Main Method</em>' containment reference.
+   * @see #getMainMethod()
    * @generated
    */
-  void setStatement(Statement value);
+  void setMainMethod(MainMethod value);
 
   /**
    * Returns the value of the '<em><b>Extended Class</b></em>' reference.

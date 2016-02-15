@@ -32,8 +32,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link demidov.projects.miniJava.impl.ExprImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link demidov.projects.miniJava.impl.ExprImpl#getType <em>Type</em>}</li>
  *   <li>{@link demidov.projects.miniJava.impl.ExprImpl#getVariable <em>Variable</em>}</li>
- *   <li>{@link demidov.projects.miniJava.impl.ExprImpl#getMethodCall <em>Method Call</em>}</li>
  *   <li>{@link demidov.projects.miniJava.impl.ExprImpl#getNumber <em>Number</em>}</li>
+ *   <li>{@link demidov.projects.miniJava.impl.ExprImpl#getMethodCall <em>Method Call</em>}</li>
  *   <li>{@link demidov.projects.miniJava.impl.ExprImpl#getLeft <em>Left</em>}</li>
  * </ul>
  *
@@ -102,16 +102,6 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
   protected Variable variable;
 
   /**
-   * The cached value of the '{@link #getMethodCall() <em>Method Call</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMethodCall()
-   * @generated
-   * @ordered
-   */
-  protected MethodCall methodCall;
-
-  /**
    * The cached value of the '{@link #getNumber() <em>Number</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -120,6 +110,16 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
    * @ordered
    */
   protected NumberValue number;
+
+  /**
+   * The cached value of the '{@link #getMethodCall() <em>Method Call</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMethodCall()
+   * @generated
+   * @ordered
+   */
+  protected MethodCall methodCall;
 
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -367,54 +367,6 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public MethodCall getMethodCall()
-  {
-    return methodCall;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetMethodCall(MethodCall newMethodCall, NotificationChain msgs)
-  {
-    MethodCall oldMethodCall = methodCall;
-    methodCall = newMethodCall;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MiniJavaPackage.EXPR__METHOD_CALL, oldMethodCall, newMethodCall);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setMethodCall(MethodCall newMethodCall)
-  {
-    if (newMethodCall != methodCall)
-    {
-      NotificationChain msgs = null;
-      if (methodCall != null)
-        msgs = ((InternalEObject)methodCall).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MiniJavaPackage.EXPR__METHOD_CALL, null, msgs);
-      if (newMethodCall != null)
-        msgs = ((InternalEObject)newMethodCall).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MiniJavaPackage.EXPR__METHOD_CALL, null, msgs);
-      msgs = basicSetMethodCall(newMethodCall, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MiniJavaPackage.EXPR__METHOD_CALL, newMethodCall, newMethodCall));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public NumberValue getNumber()
   {
     return number;
@@ -456,6 +408,54 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, MiniJavaPackage.EXPR__NUMBER, newNumber, newNumber));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MethodCall getMethodCall()
+  {
+    return methodCall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMethodCall(MethodCall newMethodCall, NotificationChain msgs)
+  {
+    MethodCall oldMethodCall = methodCall;
+    methodCall = newMethodCall;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MiniJavaPackage.EXPR__METHOD_CALL, oldMethodCall, newMethodCall);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMethodCall(MethodCall newMethodCall)
+  {
+    if (newMethodCall != methodCall)
+    {
+      NotificationChain msgs = null;
+      if (methodCall != null)
+        msgs = ((InternalEObject)methodCall).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MiniJavaPackage.EXPR__METHOD_CALL, null, msgs);
+      if (newMethodCall != null)
+        msgs = ((InternalEObject)newMethodCall).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MiniJavaPackage.EXPR__METHOD_CALL, null, msgs);
+      msgs = basicSetMethodCall(newMethodCall, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MiniJavaPackage.EXPR__METHOD_CALL, newMethodCall, newMethodCall));
   }
 
   /**
@@ -522,10 +522,10 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
         return basicSetExpression(null, msgs);
       case MiniJavaPackage.EXPR__TYPE:
         return basicSetType(null, msgs);
-      case MiniJavaPackage.EXPR__METHOD_CALL:
-        return basicSetMethodCall(null, msgs);
       case MiniJavaPackage.EXPR__NUMBER:
         return basicSetNumber(null, msgs);
+      case MiniJavaPackage.EXPR__METHOD_CALL:
+        return basicSetMethodCall(null, msgs);
       case MiniJavaPackage.EXPR__LEFT:
         return basicSetLeft(null, msgs);
     }
@@ -553,10 +553,10 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
       case MiniJavaPackage.EXPR__VARIABLE:
         if (resolve) return getVariable();
         return basicGetVariable();
-      case MiniJavaPackage.EXPR__METHOD_CALL:
-        return getMethodCall();
       case MiniJavaPackage.EXPR__NUMBER:
         return getNumber();
+      case MiniJavaPackage.EXPR__METHOD_CALL:
+        return getMethodCall();
       case MiniJavaPackage.EXPR__LEFT:
         return getLeft();
     }
@@ -588,11 +588,11 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
       case MiniJavaPackage.EXPR__VARIABLE:
         setVariable((Variable)newValue);
         return;
-      case MiniJavaPackage.EXPR__METHOD_CALL:
-        setMethodCall((MethodCall)newValue);
-        return;
       case MiniJavaPackage.EXPR__NUMBER:
         setNumber((NumberValue)newValue);
+        return;
+      case MiniJavaPackage.EXPR__METHOD_CALL:
+        setMethodCall((MethodCall)newValue);
         return;
       case MiniJavaPackage.EXPR__LEFT:
         setLeft((Expr)newValue);
@@ -626,11 +626,11 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
       case MiniJavaPackage.EXPR__VARIABLE:
         setVariable((Variable)null);
         return;
-      case MiniJavaPackage.EXPR__METHOD_CALL:
-        setMethodCall((MethodCall)null);
-        return;
       case MiniJavaPackage.EXPR__NUMBER:
         setNumber((NumberValue)null);
+        return;
+      case MiniJavaPackage.EXPR__METHOD_CALL:
+        setMethodCall((MethodCall)null);
         return;
       case MiniJavaPackage.EXPR__LEFT:
         setLeft((Expr)null);
@@ -659,10 +659,10 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
         return type != null;
       case MiniJavaPackage.EXPR__VARIABLE:
         return variable != null;
-      case MiniJavaPackage.EXPR__METHOD_CALL:
-        return methodCall != null;
       case MiniJavaPackage.EXPR__NUMBER:
         return number != null;
+      case MiniJavaPackage.EXPR__METHOD_CALL:
+        return methodCall != null;
       case MiniJavaPackage.EXPR__LEFT:
         return left != null;
     }

@@ -83,6 +83,27 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
 		tester.diagnose().assertError('duplicateNames');
 	}
 	
+	// Duplicate names of the methods
+	@Test
+	def testDuplicateMethodNamesChecking() {
+		val model = parser.parse(MAIN_CLASS_CODE + '''
+			class A {
+				public int b() {
+					return 0;
+				}
+				
+				public boolean b() {
+					return true;
+				}
+			}
+		''');
+ 
+		val classDecl = model.classDeclarations.get(1);
+		
+ 		tester.validator().checkDuplicateMethodNames(classDecl.methodDeclarations.get(0));
+		tester.diagnose().assertError('duplicateNames');
+	}
+	
 	// Duplicate names of the variables
 	@Test
 	def testDuplicateClassVariablesNamesChecking() {
@@ -289,7 +310,20 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
 		tester.validator().checkMethodParameters(statement.firstExpression.right.methodCall);
 		tester.diagnose().assertError('typeMismatch');
 	}
+	
+	// No return statement for the method
+	@Test
+	def testReturnExistanceChecking() {
+		val model = parser.parse(MAIN_CLASS_CODE + '''
+			class A {			
+				public int method(int bar) {
+				}
+			}
+		''');
 		
+		tester.validate(model).assertError('noReturn');
+	}
+			
 	// Wrong type of the return expression
 	@Test
 	def testReturnExpressionChecking1() {
@@ -349,7 +383,7 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
 					if (a) {
 					}
 					
-					returns 0;
+					return 0;
 				}
 			}
 		''');
@@ -367,7 +401,7 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
 					while (b) {
 					}
 					
-					returns 0;
+					return 0;
 				}
 			}
 			
@@ -729,26 +763,9 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
 		tester.validate(model).assertError('wrongMethod');
 	}
 	
+
 	@Test
 	def testPointExpressionChecking3() {
-		val model = parser.parse(MAIN_CLASS_CODE + '''
-			class A {
-				public int method() {
-					int a;
-					int[] b;
-					
-					a = b.(length);				
-					
-					return 0;
-				}
-			}
-		''');
- 
-		tester.validate(model).assertError('wrongMethod');
-	}
-	
-	@Test
-	def testPointExpressionChecking4() {
 		val model = parser.parse(MAIN_CLASS_CODE + '''
 			class A {
 				public int method() {
@@ -766,7 +783,7 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
 	}
 	
 	@Test
-	def testPointExpressionChecking5() {
+	def testPointExpressionChecking4() {
 		val model = parser.parse(MAIN_CLASS_CODE + '''
 			class A {
 				public int method() {
@@ -790,7 +807,7 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
 	}
 	
 	@Test
-	def testPointExpressionChecking6() {
+	def testPointExpressionChecking5() {
 		val model = parser.parse(MAIN_CLASS_CODE + '''
 			class A {
 				public int method() {
@@ -814,7 +831,7 @@ public class MiniJavaValidatorsTest extends AbstractXtextTests {
 	}
 	
 	@Test
-	def testPointExpressionChecking7() {
+	def testPointExpressionChecking6() {
 		val model = parser.parse(MAIN_CLASS_CODE + '''
 			class A {
 				public int method() {

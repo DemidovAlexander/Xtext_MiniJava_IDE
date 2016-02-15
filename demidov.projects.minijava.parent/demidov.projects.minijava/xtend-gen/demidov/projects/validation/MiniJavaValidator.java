@@ -40,6 +40,8 @@ public class MiniJavaValidator extends AbstractMiniJavaValidator {
   
   public final static String WRONG_RETURN = "wrongReturn";
   
+  public final static String NO_RETURN = "noReturn";
+  
   public final static String NOT_ARRAY = "notArray";
   
   public final static String NOT_INT = "notInt";
@@ -98,6 +100,29 @@ public class MiniJavaValidator extends AbstractMiniJavaValidator {
       if (_and) {
         this.error("Duplicate names of the classes", 
           MiniJavaPackage.Literals.CLASS_DECL__NAME, 
+          MiniJavaValidator.DUPLICATE_NAMES);
+      }
+    }
+  }
+  
+  @Check(CheckType.FAST)
+  public void checkDuplicateMethodNames(final Method method) {
+    final ClassDecl classDecl = EcoreUtil2.<ClassDecl>getContainerOfType(method, ClassDecl.class);
+    EList<Method> _methodDeclarations = classDecl.getMethodDeclarations();
+    for (final Method currentMethod : _methodDeclarations) {
+      boolean _and = false;
+      String _name = method.getName();
+      String _name_1 = currentMethod.getName();
+      boolean _equals = _name.equals(_name_1);
+      if (!_equals) {
+        _and = false;
+      } else {
+        boolean _notEquals = (!Objects.equal(method, currentMethod));
+        _and = _notEquals;
+      }
+      if (_and) {
+        this.error("Duplicate names of the methods", 
+          MiniJavaPackage.Literals.METHOD__NAME, 
           MiniJavaValidator.DUPLICATE_NAMES);
       }
     }
@@ -248,6 +273,17 @@ public class MiniJavaValidator extends AbstractMiniJavaValidator {
           }
         }
       }
+    }
+  }
+  
+  @Check(CheckType.FAST)
+  public void checkReturnExistance(final Method method) {
+    Expr _returnExpression = method.getReturnExpression();
+    boolean _equals = Objects.equal(_returnExpression, null);
+    if (_equals) {
+      this.error("No return statement for the method", 
+        MiniJavaPackage.Literals.METHOD__RETURN_EXPRESSION, 
+        MiniJavaValidator.NO_RETURN);
     }
   }
   

@@ -87,6 +87,13 @@ public class MiniJavaSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MiniJavaPackage.MAIN_METHOD:
+      {
+        MainMethod mainMethod = (MainMethod)theEObject;
+        T result = caseMainMethod(mainMethod);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MiniJavaPackage.TYPE:
       {
         Type type = (Type)theEObject;
@@ -215,6 +222,22 @@ public class MiniJavaSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseClassDecl(ClassDecl object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Main Method</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Main Method</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMainMethod(MainMethod object)
   {
     return null;
   }

@@ -7,10 +7,15 @@ Program:
 	;
 
 MainClass returns ClassDecl:
-	'class' name = ID '{' 'public' 'static' 'void' 'main' '(' 'String' '[' ']' ID ')' '{'
-			statement = Statement 
-		'}'
+	'class' name = ID '{'
+		mainMethod = MainMethod
     '}'
+	;
+	
+MainMethod:
+	'public' 'static' 'void' 'main' '(' 'String' '[' ']' ID ')' '{'
+		statement = Statement 
+	'}'
 	;
 
 ClassDeclaration returns ClassDecl:
@@ -39,7 +44,7 @@ MethodDeclaration returns Method:
 	'public' methodType = Type name = ID '(' ( formalVarDeclarations += Variable ( ',' formalVarDeclarations += Variable )* )? ')' '{'
 		( localVarDeclarations += VarDeclaration )* 
 		( statements += Statement )*
-		'return' returnExpression = Expression ';'
+		('return' returnExpression = Expression ';')?
 	'}'
 	;
 	
@@ -49,7 +54,7 @@ Statement:
 	|	statementType = 'while' '(' firstExpression = Expression ')' statements += Statement
 	|	statementType = 'System.out.println' '(' firstExpression = Expression ')' ';'
 	|	variable = [Variable | ID] statementType = '=' firstExpression = Expression ';'
-	|	variable = [Variable | ID] isArrayElementAssignment?='[' firstExpression = Expression ']' 
+	|	variable = [Variable | ID] isArrayElementAssignment?='[' firstExpression = Expression ']'
 			statementType = '=' secondExpression = Expression ';'
 	;
 
@@ -75,7 +80,7 @@ Negation returns Expr:
 	;
   
 Point returns Expr:
-	SquareBrackets ( {Point.left=current} expressionType = '.' right = SquareBrackets )*
+	SquareBrackets ( {Point.left=current} expressionType = '.' right = MethodCallExpr )*
 	;
   
 SquareBrackets returns Expr:
@@ -89,10 +94,13 @@ Primary returns Expr:
 	|	expressionType = 'new' 'int' '[' expression = Expression ']'
 	|	expressionType = 'new' type = Type '(' ')'
 	|	expressionType = '(' expression = Expression ')'
-	|	expressionType = 'length'
 	|	variable = [Variable | ID]
-	|	methodCall = MethodCall
 	|	number = NumberValue
+	;
+	
+MethodCallExpr returns Expr:
+	expressionType = 'length'
+	| methodCall = MethodCall
 	;
 	
 MethodCall:

@@ -179,7 +179,7 @@ public class CommonUtils {
         return type_4;
       }
     }
-    return null;
+    return MiniJavaFactory.eINSTANCE.createType();
   }
   
   public static boolean checkCompatibleClassTypes(final ClassDecl targetClass, final ClassDecl parameterClass) {

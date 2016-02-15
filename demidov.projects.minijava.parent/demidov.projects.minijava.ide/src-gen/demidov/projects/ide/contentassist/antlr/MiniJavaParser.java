@@ -41,8 +41,10 @@ public class MiniJavaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMultiplicationAccess().getExpressionTypeAlternatives_1_1_0(), "rule__Multiplication__ExpressionTypeAlternatives_1_1_0");
 					put(grammarAccess.getNegationOrPointExpressionAccess().getAlternatives(), "rule__NegationOrPointExpression__Alternatives");
 					put(grammarAccess.getPrimaryAccess().getAlternatives(), "rule__Primary__Alternatives");
+					put(grammarAccess.getMethodCallExprAccess().getAlternatives(), "rule__MethodCallExpr__Alternatives");
 					put(grammarAccess.getProgramAccess().getGroup(), "rule__Program__Group__0");
 					put(grammarAccess.getMainClassAccess().getGroup(), "rule__MainClass__Group__0");
+					put(grammarAccess.getMainMethodAccess().getGroup(), "rule__MainMethod__Group__0");
 					put(grammarAccess.getClassDeclarationAccess().getGroup(), "rule__ClassDeclaration__Group__0");
 					put(grammarAccess.getClassDeclarationAccess().getGroup_2(), "rule__ClassDeclaration__Group_2__0");
 					put(grammarAccess.getTypeAccess().getGroup_0(), "rule__Type__Group_0__0");
@@ -51,6 +53,7 @@ public class MiniJavaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMethodDeclarationAccess().getGroup(), "rule__MethodDeclaration__Group__0");
 					put(grammarAccess.getMethodDeclarationAccess().getGroup_4(), "rule__MethodDeclaration__Group_4__0");
 					put(grammarAccess.getMethodDeclarationAccess().getGroup_4_1(), "rule__MethodDeclaration__Group_4_1__0");
+					put(grammarAccess.getMethodDeclarationAccess().getGroup_9(), "rule__MethodDeclaration__Group_9__0");
 					put(grammarAccess.getStatementAccess().getGroup_0(), "rule__Statement__Group_0__0");
 					put(grammarAccess.getStatementAccess().getGroup_1(), "rule__Statement__Group_1__0");
 					put(grammarAccess.getStatementAccess().getGroup_2(), "rule__Statement__Group_2__0");
@@ -77,7 +80,8 @@ public class MiniJavaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getProgramAccess().getClassDeclarationsAssignment_0(), "rule__Program__ClassDeclarationsAssignment_0");
 					put(grammarAccess.getProgramAccess().getClassDeclarationsAssignment_1(), "rule__Program__ClassDeclarationsAssignment_1");
 					put(grammarAccess.getMainClassAccess().getNameAssignment_1(), "rule__MainClass__NameAssignment_1");
-					put(grammarAccess.getMainClassAccess().getStatementAssignment_14(), "rule__MainClass__StatementAssignment_14");
+					put(grammarAccess.getMainClassAccess().getMainMethodAssignment_3(), "rule__MainClass__MainMethodAssignment_3");
+					put(grammarAccess.getMainMethodAccess().getStatementAssignment_11(), "rule__MainMethod__StatementAssignment_11");
 					put(grammarAccess.getClassDeclarationAccess().getNameAssignment_1(), "rule__ClassDeclaration__NameAssignment_1");
 					put(grammarAccess.getClassDeclarationAccess().getExtendedClassAssignment_2_1(), "rule__ClassDeclaration__ExtendedClassAssignment_2_1");
 					put(grammarAccess.getClassDeclarationAccess().getVarDeclarationsAssignment_4(), "rule__ClassDeclaration__VarDeclarationsAssignment_4");
@@ -95,7 +99,7 @@ public class MiniJavaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMethodDeclarationAccess().getFormalVarDeclarationsAssignment_4_1_1(), "rule__MethodDeclaration__FormalVarDeclarationsAssignment_4_1_1");
 					put(grammarAccess.getMethodDeclarationAccess().getLocalVarDeclarationsAssignment_7(), "rule__MethodDeclaration__LocalVarDeclarationsAssignment_7");
 					put(grammarAccess.getMethodDeclarationAccess().getStatementsAssignment_8(), "rule__MethodDeclaration__StatementsAssignment_8");
-					put(grammarAccess.getMethodDeclarationAccess().getReturnExpressionAssignment_10(), "rule__MethodDeclaration__ReturnExpressionAssignment_10");
+					put(grammarAccess.getMethodDeclarationAccess().getReturnExpressionAssignment_9_1(), "rule__MethodDeclaration__ReturnExpressionAssignment_9_1");
 					put(grammarAccess.getStatementAccess().getStatementTypeAssignment_0_0(), "rule__Statement__StatementTypeAssignment_0_0");
 					put(grammarAccess.getStatementAccess().getStatementsAssignment_0_1(), "rule__Statement__StatementsAssignment_0_1");
 					put(grammarAccess.getStatementAccess().getStatementTypeAssignment_1_0(), "rule__Statement__StatementTypeAssignment_1_0");
@@ -136,10 +140,10 @@ public class MiniJavaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPrimaryAccess().getTypeAssignment_4_1(), "rule__Primary__TypeAssignment_4_1");
 					put(grammarAccess.getPrimaryAccess().getExpressionTypeAssignment_5_0(), "rule__Primary__ExpressionTypeAssignment_5_0");
 					put(grammarAccess.getPrimaryAccess().getExpressionAssignment_5_1(), "rule__Primary__ExpressionAssignment_5_1");
-					put(grammarAccess.getPrimaryAccess().getExpressionTypeAssignment_6(), "rule__Primary__ExpressionTypeAssignment_6");
-					put(grammarAccess.getPrimaryAccess().getVariableAssignment_7(), "rule__Primary__VariableAssignment_7");
-					put(grammarAccess.getPrimaryAccess().getMethodCallAssignment_8(), "rule__Primary__MethodCallAssignment_8");
-					put(grammarAccess.getPrimaryAccess().getNumberAssignment_9(), "rule__Primary__NumberAssignment_9");
+					put(grammarAccess.getPrimaryAccess().getVariableAssignment_6(), "rule__Primary__VariableAssignment_6");
+					put(grammarAccess.getPrimaryAccess().getNumberAssignment_7(), "rule__Primary__NumberAssignment_7");
+					put(grammarAccess.getMethodCallExprAccess().getExpressionTypeAssignment_0(), "rule__MethodCallExpr__ExpressionTypeAssignment_0");
+					put(grammarAccess.getMethodCallExprAccess().getMethodCallAssignment_1(), "rule__MethodCallExpr__MethodCallAssignment_1");
 					put(grammarAccess.getMethodCallAccess().getMethodAssignment_0(), "rule__MethodCall__MethodAssignment_0");
 					put(grammarAccess.getMethodCallAccess().getParametersAssignment_2_0(), "rule__MethodCall__ParametersAssignment_2_0");
 					put(grammarAccess.getMethodCallAccess().getParametersAssignment_2_1_1(), "rule__MethodCall__ParametersAssignment_2_1_1");

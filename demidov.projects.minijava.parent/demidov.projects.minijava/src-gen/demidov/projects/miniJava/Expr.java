@@ -19,8 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link demidov.projects.miniJava.Expr#getExpression <em>Expression</em>}</li>
  *   <li>{@link demidov.projects.miniJava.Expr#getType <em>Type</em>}</li>
  *   <li>{@link demidov.projects.miniJava.Expr#getVariable <em>Variable</em>}</li>
- *   <li>{@link demidov.projects.miniJava.Expr#getMethodCall <em>Method Call</em>}</li>
  *   <li>{@link demidov.projects.miniJava.Expr#getNumber <em>Number</em>}</li>
+ *   <li>{@link demidov.projects.miniJava.Expr#getMethodCall <em>Method Call</em>}</li>
  *   <li>{@link demidov.projects.miniJava.Expr#getLeft <em>Left</em>}</li>
  * </ul>
  *
@@ -161,32 +161,6 @@ public interface Expr extends EObject
   void setVariable(Variable value);
 
   /**
-   * Returns the value of the '<em><b>Method Call</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Method Call</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Method Call</em>' containment reference.
-   * @see #setMethodCall(MethodCall)
-   * @see demidov.projects.miniJava.MiniJavaPackage#getExpr_MethodCall()
-   * @model containment="true"
-   * @generated
-   */
-  MethodCall getMethodCall();
-
-  /**
-   * Sets the value of the '{@link demidov.projects.miniJava.Expr#getMethodCall <em>Method Call</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Method Call</em>' containment reference.
-   * @see #getMethodCall()
-   * @generated
-   */
-  void setMethodCall(MethodCall value);
-
-  /**
    * Returns the value of the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
@@ -211,6 +185,32 @@ public interface Expr extends EObject
    * @generated
    */
   void setNumber(NumberValue value);
+
+  /**
+   * Returns the value of the '<em><b>Method Call</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Method Call</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Method Call</em>' containment reference.
+   * @see #setMethodCall(MethodCall)
+   * @see demidov.projects.miniJava.MiniJavaPackage#getExpr_MethodCall()
+   * @model containment="true"
+   * @generated
+   */
+  MethodCall getMethodCall();
+
+  /**
+   * Sets the value of the '{@link demidov.projects.miniJava.Expr#getMethodCall <em>Method Call</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Method Call</em>' containment reference.
+   * @see #getMethodCall()
+   * @generated
+   */
+  void setMethodCall(MethodCall value);
 
   /**
    * Returns the value of the '<em><b>Left</b></em>' containment reference.

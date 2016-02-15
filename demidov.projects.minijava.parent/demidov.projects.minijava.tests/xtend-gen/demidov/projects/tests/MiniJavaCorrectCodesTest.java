@@ -3,15 +3,13 @@
  */
 package demidov.projects.tests;
 
-import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import demidov.projects.MiniJavaStandaloneSetup;
 import demidov.projects.miniJava.Program;
 import demidov.projects.tests.MiniJavaInjectorProvider;
+import demidov.projects.tests.TestUtils;
 import demidov.projects.validation.MiniJavaValidator;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import org.eclipse.xtext.junit4.AbstractXtextTests;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -32,26 +30,6 @@ public class MiniJavaCorrectCodesTest extends AbstractXtextTests {
   
   private ValidatorTester<MiniJavaValidator> tester;
   
-  public String readSourceFile(final String fileName) {
-    try {
-      StringBuilder text = new StringBuilder();
-      FileReader _fileReader = new FileReader(fileName);
-      BufferedReader bufferedReader = new BufferedReader(_fileReader);
-      String line = bufferedReader.readLine();
-      final String newline = System.getProperty("line.separator");
-      while ((!Objects.equal(line, null))) {
-        {
-          text.append((line + newline));
-          String _readLine = bufferedReader.readLine();
-          line = _readLine;
-        }
-      }
-      return text.toString();
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
   @Before
   public void setUpTesting() {
     try {
@@ -68,7 +46,7 @@ public class MiniJavaCorrectCodesTest extends AbstractXtextTests {
   @Test
   public void testCorrectFactorialCode() {
     try {
-      String _readSourceFile = this.readSourceFile(".\\src\\demidov\\projects\\tests\\Factorial.mj");
+      String _readSourceFile = TestUtils.readSourceFile(".\\src\\demidov\\projects\\tests\\Factorial.mj");
       final Program model = this.parser.parse(_readSourceFile);
       AssertableDiagnostics _validate = this.tester.validate(model);
       _validate.assertOK();
@@ -80,7 +58,7 @@ public class MiniJavaCorrectCodesTest extends AbstractXtextTests {
   @Test
   public void testCorrectBinarySearchCode() {
     try {
-      String _readSourceFile = this.readSourceFile(".\\src\\demidov\\projects\\tests\\BinarySearch.mj");
+      String _readSourceFile = TestUtils.readSourceFile(".\\src\\demidov\\projects\\tests\\BinarySearch.mj");
       final Program model = this.parser.parse(_readSourceFile);
       AssertableDiagnostics _validate = this.tester.validate(model);
       _validate.assertOK();
@@ -92,7 +70,7 @@ public class MiniJavaCorrectCodesTest extends AbstractXtextTests {
   @Test
   public void testCorrectBubbleSortCode() {
     try {
-      String _readSourceFile = this.readSourceFile(".\\src\\demidov\\projects\\tests\\BubbleSort.mj");
+      String _readSourceFile = TestUtils.readSourceFile(".\\src\\demidov\\projects\\tests\\BubbleSort.mj");
       final Program model = this.parser.parse(_readSourceFile);
       AssertableDiagnostics _validate = this.tester.validate(model);
       _validate.assertOK();
@@ -104,7 +82,7 @@ public class MiniJavaCorrectCodesTest extends AbstractXtextTests {
   @Test
   public void testCorrectTreeVisitorCode() {
     try {
-      String _readSourceFile = this.readSourceFile(".\\src\\demidov\\projects\\tests\\TreeVisitor.mj");
+      String _readSourceFile = TestUtils.readSourceFile(".\\src\\demidov\\projects\\tests\\TreeVisitor.mj");
       final Program model = this.parser.parse(_readSourceFile);
       AssertableDiagnostics _validate = this.tester.validate(model);
       _validate.assertOK();
@@ -116,7 +94,7 @@ public class MiniJavaCorrectCodesTest extends AbstractXtextTests {
   @Test
   public void testCorrectQuickSortCode() {
     try {
-      String _readSourceFile = this.readSourceFile(".\\src\\demidov\\projects\\tests\\QuickSort.mj");
+      String _readSourceFile = TestUtils.readSourceFile(".\\src\\demidov\\projects\\tests\\QuickSort.mj");
       final Program model = this.parser.parse(_readSourceFile);
       AssertableDiagnostics _validate = this.tester.validate(model);
       _validate.assertOK();
@@ -128,7 +106,7 @@ public class MiniJavaCorrectCodesTest extends AbstractXtextTests {
   @Test
   public void testCorrectLinearSearchCode() {
     try {
-      String _readSourceFile = this.readSourceFile(".\\src\\demidov\\projects\\tests\\LinearSearch.mj");
+      String _readSourceFile = TestUtils.readSourceFile(".\\src\\demidov\\projects\\tests\\LinearSearch.mj");
       final Program model = this.parser.parse(_readSourceFile);
       AssertableDiagnostics _validate = this.tester.validate(model);
       _validate.assertOK();
@@ -140,7 +118,7 @@ public class MiniJavaCorrectCodesTest extends AbstractXtextTests {
   @Test
   public void testCorrectLinkedListCode() {
     try {
-      String _readSourceFile = this.readSourceFile(".\\src\\demidov\\projects\\tests\\LinkedList.mj");
+      String _readSourceFile = TestUtils.readSourceFile(".\\src\\demidov\\projects\\tests\\LinkedList.mj");
       final Program model = this.parser.parse(_readSourceFile);
       AssertableDiagnostics _validate = this.tester.validate(model);
       _validate.assertOK();
@@ -152,7 +130,7 @@ public class MiniJavaCorrectCodesTest extends AbstractXtextTests {
   @Test
   public void testCorrectBinaryTreeCode() {
     try {
-      String _readSourceFile = this.readSourceFile(".\\src\\demidov\\projects\\tests\\BinaryTree.mj");
+      String _readSourceFile = TestUtils.readSourceFile(".\\src\\demidov\\projects\\tests\\BinaryTree.mj");
       final Program model = this.parser.parse(_readSourceFile);
       AssertableDiagnostics _validate = this.tester.validate(model);
       _validate.assertOK();

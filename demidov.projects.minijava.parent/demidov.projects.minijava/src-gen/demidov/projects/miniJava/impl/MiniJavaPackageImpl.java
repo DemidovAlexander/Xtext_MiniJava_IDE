@@ -7,6 +7,7 @@ import demidov.projects.miniJava.Addition;
 import demidov.projects.miniJava.ClassDecl;
 import demidov.projects.miniJava.Expr;
 import demidov.projects.miniJava.Expression;
+import demidov.projects.miniJava.MainMethod;
 import demidov.projects.miniJava.Method;
 import demidov.projects.miniJava.MethodCall;
 import demidov.projects.miniJava.MiniJavaFactory;
@@ -49,6 +50,13 @@ public class MiniJavaPackageImpl extends EPackageImpl implements MiniJavaPackage
    * @generated
    */
   private EClass classDeclEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mainMethodEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -249,7 +257,7 @@ public class MiniJavaPackageImpl extends EPackageImpl implements MiniJavaPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassDecl_Statement()
+  public EReference getClassDecl_MainMethod()
   {
     return (EReference)classDeclEClass.getEStructuralFeatures().get(1);
   }
@@ -282,6 +290,26 @@ public class MiniJavaPackageImpl extends EPackageImpl implements MiniJavaPackage
   public EReference getClassDecl_MethodDeclarations()
   {
     return (EReference)classDeclEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMainMethod()
+  {
+    return mainMethodEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMainMethod_Statement()
+  {
+    return (EReference)mainMethodEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -569,7 +597,7 @@ public class MiniJavaPackageImpl extends EPackageImpl implements MiniJavaPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpr_MethodCall()
+  public EReference getExpr_Number()
   {
     return (EReference)exprEClass.getEStructuralFeatures().get(5);
   }
@@ -579,7 +607,7 @@ public class MiniJavaPackageImpl extends EPackageImpl implements MiniJavaPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpr_Number()
+  public EReference getExpr_MethodCall()
   {
     return (EReference)exprEClass.getEStructuralFeatures().get(6);
   }
@@ -729,10 +757,13 @@ public class MiniJavaPackageImpl extends EPackageImpl implements MiniJavaPackage
 
     classDeclEClass = createEClass(CLASS_DECL);
     createEAttribute(classDeclEClass, CLASS_DECL__NAME);
-    createEReference(classDeclEClass, CLASS_DECL__STATEMENT);
+    createEReference(classDeclEClass, CLASS_DECL__MAIN_METHOD);
     createEReference(classDeclEClass, CLASS_DECL__EXTENDED_CLASS);
     createEReference(classDeclEClass, CLASS_DECL__VAR_DECLARATIONS);
     createEReference(classDeclEClass, CLASS_DECL__METHOD_DECLARATIONS);
+
+    mainMethodEClass = createEClass(MAIN_METHOD);
+    createEReference(mainMethodEClass, MAIN_METHOD__STATEMENT);
 
     typeEClass = createEClass(TYPE);
     createEAttribute(typeEClass, TYPE__TYPE_NAME);
@@ -767,8 +798,8 @@ public class MiniJavaPackageImpl extends EPackageImpl implements MiniJavaPackage
     createEReference(exprEClass, EXPR__EXPRESSION);
     createEReference(exprEClass, EXPR__TYPE);
     createEReference(exprEClass, EXPR__VARIABLE);
-    createEReference(exprEClass, EXPR__METHOD_CALL);
     createEReference(exprEClass, EXPR__NUMBER);
+    createEReference(exprEClass, EXPR__METHOD_CALL);
     createEReference(exprEClass, EXPR__LEFT);
 
     methodCallEClass = createEClass(METHOD_CALL);
@@ -830,10 +861,13 @@ public class MiniJavaPackageImpl extends EPackageImpl implements MiniJavaPackage
 
     initEClass(classDeclEClass, ClassDecl.class, "ClassDecl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getClassDecl_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getClassDecl_Statement(), this.getStatement(), null, "statement", null, 0, 1, ClassDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClassDecl_MainMethod(), this.getMainMethod(), null, "mainMethod", null, 0, 1, ClassDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassDecl_ExtendedClass(), this.getClassDecl(), null, "extendedClass", null, 0, 1, ClassDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassDecl_VarDeclarations(), this.getVarDeclaration(), null, "varDeclarations", null, 0, -1, ClassDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassDecl_MethodDeclarations(), this.getMethod(), null, "methodDeclarations", null, 0, -1, ClassDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mainMethodEClass, MainMethod.class, "MainMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMainMethod_Statement(), this.getStatement(), null, "statement", null, 0, 1, MainMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -868,8 +902,8 @@ public class MiniJavaPackageImpl extends EPackageImpl implements MiniJavaPackage
     initEReference(getExpr_Expression(), this.getExpr(), null, "expression", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpr_Type(), this.getType(), null, "type", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpr_Variable(), this.getVariable(), null, "variable", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpr_MethodCall(), this.getMethodCall(), null, "methodCall", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpr_Number(), this.getNumberValue(), null, "number", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_MethodCall(), this.getMethodCall(), null, "methodCall", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpr_Left(), this.getExpr(), null, "left", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(methodCallEClass, MethodCall.class, "MethodCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

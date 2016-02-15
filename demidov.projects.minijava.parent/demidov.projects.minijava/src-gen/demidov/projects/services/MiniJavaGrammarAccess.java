@@ -58,30 +58,17 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cPublicKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cStaticKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cVoidKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Keyword cMainKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cLeftParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cStringKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Keyword cLeftSquareBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Keyword cRightSquareBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final RuleCall cIDTerminalRuleCall_11 = (RuleCall)cGroup.eContents().get(11);
-		private final Keyword cRightParenthesisKeyword_12 = (Keyword)cGroup.eContents().get(12);
-		private final Keyword cLeftCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
-		private final Assignment cStatementAssignment_14 = (Assignment)cGroup.eContents().get(14);
-		private final RuleCall cStatementStatementParserRuleCall_14_0 = (RuleCall)cStatementAssignment_14.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_15 = (Keyword)cGroup.eContents().get(15);
-		private final Keyword cRightCurlyBracketKeyword_16 = (Keyword)cGroup.eContents().get(16);
+		private final Assignment cMainMethodAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMainMethodMainMethodParserRuleCall_3_0 = (RuleCall)cMainMethodAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//MainClass ClassDecl:
-		//	'class' name=ID '{' 'public' 'static' 'void' 'main' '(' 'String' '[' ']' ID ')' '{'
-		//	statement=Statement
-		//	'}'
+		//	'class' name=ID '{'
+		//	mainMethod=MainMethod
 		//	'}'
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'class' name=ID '{' 'public' 'static' 'void' 'main' '(' 'String' '[' ']' ID ')' '{' statement=Statement '}' '}'
+		//'class' name=ID '{' mainMethod=MainMethod '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'class'
@@ -96,50 +83,83 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
+		//mainMethod=MainMethod
+		public Assignment getMainMethodAssignment_3() { return cMainMethodAssignment_3; }
+		
+		//MainMethod
+		public RuleCall getMainMethodMainMethodParserRuleCall_3_0() { return cMainMethodMainMethodParserRuleCall_3_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+	public class MainMethodElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "demidov.projects.MiniJava.MainMethod");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cPublicKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cStaticKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cVoidKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cMainKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cStringKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cLeftSquareBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cRightSquareBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final RuleCall cIDTerminalRuleCall_8 = (RuleCall)cGroup.eContents().get(8);
+		private final Keyword cRightParenthesisKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cLeftCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cStatementAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cStatementStatementParserRuleCall_11_0 = (RuleCall)cStatementAssignment_11.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		
+		//MainMethod:
+		//	'public' 'static' 'void' 'main' '(' 'String' '[' ']' ID ')' '{'
+		//	statement=Statement
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'public' 'static' 'void' 'main' '(' 'String' '[' ']' ID ')' '{' statement=Statement '}'
+		public Group getGroup() { return cGroup; }
+		
 		//'public'
-		public Keyword getPublicKeyword_3() { return cPublicKeyword_3; }
+		public Keyword getPublicKeyword_0() { return cPublicKeyword_0; }
 		
 		//'static'
-		public Keyword getStaticKeyword_4() { return cStaticKeyword_4; }
+		public Keyword getStaticKeyword_1() { return cStaticKeyword_1; }
 		
 		//'void'
-		public Keyword getVoidKeyword_5() { return cVoidKeyword_5; }
+		public Keyword getVoidKeyword_2() { return cVoidKeyword_2; }
 		
 		//'main'
-		public Keyword getMainKeyword_6() { return cMainKeyword_6; }
+		public Keyword getMainKeyword_3() { return cMainKeyword_3; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_7() { return cLeftParenthesisKeyword_7; }
+		public Keyword getLeftParenthesisKeyword_4() { return cLeftParenthesisKeyword_4; }
 		
 		//'String'
-		public Keyword getStringKeyword_8() { return cStringKeyword_8; }
+		public Keyword getStringKeyword_5() { return cStringKeyword_5; }
 		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_9() { return cLeftSquareBracketKeyword_9; }
+		public Keyword getLeftSquareBracketKeyword_6() { return cLeftSquareBracketKeyword_6; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_10() { return cRightSquareBracketKeyword_10; }
+		public Keyword getRightSquareBracketKeyword_7() { return cRightSquareBracketKeyword_7; }
 		
 		//ID
-		public RuleCall getIDTerminalRuleCall_11() { return cIDTerminalRuleCall_11; }
+		public RuleCall getIDTerminalRuleCall_8() { return cIDTerminalRuleCall_8; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_12() { return cRightParenthesisKeyword_12; }
+		public Keyword getRightParenthesisKeyword_9() { return cRightParenthesisKeyword_9; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_13() { return cLeftCurlyBracketKeyword_13; }
+		public Keyword getLeftCurlyBracketKeyword_10() { return cLeftCurlyBracketKeyword_10; }
 		
 		//statement=Statement
-		public Assignment getStatementAssignment_14() { return cStatementAssignment_14; }
+		public Assignment getStatementAssignment_11() { return cStatementAssignment_11; }
 		
 		//Statement
-		public RuleCall getStatementStatementParserRuleCall_14_0() { return cStatementStatementParserRuleCall_14_0; }
+		public RuleCall getStatementStatementParserRuleCall_11_0() { return cStatementStatementParserRuleCall_11_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_15() { return cRightCurlyBracketKeyword_15; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_16() { return cRightCurlyBracketKeyword_16; }
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 	public class ClassDeclarationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "demidov.projects.MiniJava.ClassDeclaration");
@@ -346,23 +366,23 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLocalVarDeclarationsVarDeclarationParserRuleCall_7_0 = (RuleCall)cLocalVarDeclarationsAssignment_7.eContents().get(0);
 		private final Assignment cStatementsAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cStatementsStatementParserRuleCall_8_0 = (RuleCall)cStatementsAssignment_8.eContents().get(0);
-		private final Keyword cReturnKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Assignment cReturnExpressionAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cReturnExpressionExpressionParserRuleCall_10_0 = (RuleCall)cReturnExpressionAssignment_10.eContents().get(0);
-		private final Keyword cSemicolonKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Keyword cReturnKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Assignment cReturnExpressionAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
+		private final RuleCall cReturnExpressionExpressionParserRuleCall_9_1_0 = (RuleCall)cReturnExpressionAssignment_9_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_9_2 = (Keyword)cGroup_9.eContents().get(2);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//MethodDeclaration Method:
 		//	'public' methodType=Type name=ID '(' (formalVarDeclarations+=Variable (',' formalVarDeclarations+=Variable)*)? ')'
 		//	'{'
 		//	localVarDeclarations+=VarDeclaration*
-		//	statements+=Statement*
-		//	'return' returnExpression=Expression ';'
+		//	statements+=Statement* ('return' returnExpression=Expression ';')?
 		//	'}'
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'public' methodType=Type name=ID '(' (formalVarDeclarations+=Variable (',' formalVarDeclarations+=Variable)*)? ')' '{'
-		//localVarDeclarations+=VarDeclaration* statements+=Statement* 'return' returnExpression=Expression ';' '}'
+		//localVarDeclarations+=VarDeclaration* statements+=Statement* ('return' returnExpression=Expression ';')? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'public'
@@ -422,20 +442,23 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 		//Statement
 		public RuleCall getStatementsStatementParserRuleCall_8_0() { return cStatementsStatementParserRuleCall_8_0; }
 		
+		//('return' returnExpression=Expression ';')?
+		public Group getGroup_9() { return cGroup_9; }
+		
 		//'return'
-		public Keyword getReturnKeyword_9() { return cReturnKeyword_9; }
+		public Keyword getReturnKeyword_9_0() { return cReturnKeyword_9_0; }
 		
 		//returnExpression=Expression
-		public Assignment getReturnExpressionAssignment_10() { return cReturnExpressionAssignment_10; }
+		public Assignment getReturnExpressionAssignment_9_1() { return cReturnExpressionAssignment_9_1; }
 		
 		//Expression
-		public RuleCall getReturnExpressionExpressionParserRuleCall_10_0() { return cReturnExpressionExpressionParserRuleCall_10_0; }
+		public RuleCall getReturnExpressionExpressionParserRuleCall_9_1_0() { return cReturnExpressionExpressionParserRuleCall_9_1_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_11() { return cSemicolonKeyword_11; }
+		public Keyword getSemicolonKeyword_9_2() { return cSemicolonKeyword_9_2; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
 	}
 	public class StatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "demidov.projects.MiniJava.Statement");
@@ -881,19 +904,19 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExpressionTypeAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final Keyword cExpressionTypeFullStopKeyword_1_1_0 = (Keyword)cExpressionTypeAssignment_1_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightSquareBracketsParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightMethodCallExprParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//Point Expr:
-		//	SquareBrackets ({Point.left=current} expressionType='.' right=SquareBrackets)*
+		//	SquareBrackets ({Point.left=current} expressionType='.' right=MethodCallExpr)*
 		@Override public ParserRule getRule() { return rule; }
 		
-		//SquareBrackets ({Point.left=current} expressionType='.' right=SquareBrackets)*
+		//SquareBrackets ({Point.left=current} expressionType='.' right=MethodCallExpr)*
 		public Group getGroup() { return cGroup; }
 		
 		//SquareBrackets
 		public RuleCall getSquareBracketsParserRuleCall_0() { return cSquareBracketsParserRuleCall_0; }
 		
-		//({Point.left=current} expressionType='.' right=SquareBrackets)*
+		//({Point.left=current} expressionType='.' right=MethodCallExpr)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{Point.left=current}
@@ -905,11 +928,11 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 		//'.'
 		public Keyword getExpressionTypeFullStopKeyword_1_1_0() { return cExpressionTypeFullStopKeyword_1_1_0; }
 		
-		//right=SquareBrackets
+		//right=MethodCallExpr
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 		
-		//SquareBrackets
-		public RuleCall getRightSquareBracketsParserRuleCall_1_2_0() { return cRightSquareBracketsParserRuleCall_1_2_0; }
+		//MethodCallExpr
+		public RuleCall getRightMethodCallExprParserRuleCall_1_2_0() { return cRightMethodCallExprParserRuleCall_1_2_0; }
 	}
 	public class SquareBracketsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "demidov.projects.MiniJava.SquareBrackets");
@@ -984,15 +1007,11 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExpressionAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
 		private final RuleCall cExpressionExpressionParserRuleCall_5_1_0 = (RuleCall)cExpressionAssignment_5_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
-		private final Assignment cExpressionTypeAssignment_6 = (Assignment)cAlternatives.eContents().get(6);
-		private final Keyword cExpressionTypeLengthKeyword_6_0 = (Keyword)cExpressionTypeAssignment_6.eContents().get(0);
-		private final Assignment cVariableAssignment_7 = (Assignment)cAlternatives.eContents().get(7);
-		private final CrossReference cVariableVariableCrossReference_7_0 = (CrossReference)cVariableAssignment_7.eContents().get(0);
-		private final RuleCall cVariableVariableIDTerminalRuleCall_7_0_1 = (RuleCall)cVariableVariableCrossReference_7_0.eContents().get(1);
-		private final Assignment cMethodCallAssignment_8 = (Assignment)cAlternatives.eContents().get(8);
-		private final RuleCall cMethodCallMethodCallParserRuleCall_8_0 = (RuleCall)cMethodCallAssignment_8.eContents().get(0);
-		private final Assignment cNumberAssignment_9 = (Assignment)cAlternatives.eContents().get(9);
-		private final RuleCall cNumberNumberValueParserRuleCall_9_0 = (RuleCall)cNumberAssignment_9.eContents().get(0);
+		private final Assignment cVariableAssignment_6 = (Assignment)cAlternatives.eContents().get(6);
+		private final CrossReference cVariableVariableCrossReference_6_0 = (CrossReference)cVariableAssignment_6.eContents().get(0);
+		private final RuleCall cVariableVariableIDTerminalRuleCall_6_0_1 = (RuleCall)cVariableVariableCrossReference_6_0.eContents().get(1);
+		private final Assignment cNumberAssignment_7 = (Assignment)cAlternatives.eContents().get(7);
+		private final RuleCall cNumberNumberValueParserRuleCall_7_0 = (RuleCall)cNumberAssignment_7.eContents().get(0);
 		
 		//Primary Expr:
 		//	expressionType='true'
@@ -1001,14 +1020,12 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 		//	| expressionType='new' 'int' '[' expression=Expression ']'
 		//	| expressionType='new' type=Type '(' ')'
 		//	| expressionType='(' expression=Expression ')'
-		//	| expressionType='length'
-		//	| variable=[Variable] | methodCall=MethodCall
-		//	| number=NumberValue
+		//	| variable=[Variable] | number=NumberValue
 		@Override public ParserRule getRule() { return rule; }
 		
 		//expressionType='true' | expressionType='false' | expressionType='this' | expressionType='new' 'int' '['
 		//expression=Expression ']' | expressionType='new' type=Type '(' ')' | expressionType='(' expression=Expression ')' |
-		//expressionType='length' | variable=[Variable] | methodCall=MethodCall | number=NumberValue
+		//variable=[Variable] | number=NumberValue
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//expressionType='true'
@@ -1092,32 +1109,48 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 		//')'
 		public Keyword getRightParenthesisKeyword_5_2() { return cRightParenthesisKeyword_5_2; }
 		
-		//expressionType='length'
-		public Assignment getExpressionTypeAssignment_6() { return cExpressionTypeAssignment_6; }
-		
-		//'length'
-		public Keyword getExpressionTypeLengthKeyword_6_0() { return cExpressionTypeLengthKeyword_6_0; }
-		
 		//variable=[Variable]
-		public Assignment getVariableAssignment_7() { return cVariableAssignment_7; }
+		public Assignment getVariableAssignment_6() { return cVariableAssignment_6; }
 		
 		//[Variable]
-		public CrossReference getVariableVariableCrossReference_7_0() { return cVariableVariableCrossReference_7_0; }
+		public CrossReference getVariableVariableCrossReference_6_0() { return cVariableVariableCrossReference_6_0; }
 		
 		//ID
-		public RuleCall getVariableVariableIDTerminalRuleCall_7_0_1() { return cVariableVariableIDTerminalRuleCall_7_0_1; }
-		
-		//methodCall=MethodCall
-		public Assignment getMethodCallAssignment_8() { return cMethodCallAssignment_8; }
-		
-		//MethodCall
-		public RuleCall getMethodCallMethodCallParserRuleCall_8_0() { return cMethodCallMethodCallParserRuleCall_8_0; }
+		public RuleCall getVariableVariableIDTerminalRuleCall_6_0_1() { return cVariableVariableIDTerminalRuleCall_6_0_1; }
 		
 		//number=NumberValue
-		public Assignment getNumberAssignment_9() { return cNumberAssignment_9; }
+		public Assignment getNumberAssignment_7() { return cNumberAssignment_7; }
 		
 		//NumberValue
-		public RuleCall getNumberNumberValueParserRuleCall_9_0() { return cNumberNumberValueParserRuleCall_9_0; }
+		public RuleCall getNumberNumberValueParserRuleCall_7_0() { return cNumberNumberValueParserRuleCall_7_0; }
+	}
+	public class MethodCallExprElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "demidov.projects.MiniJava.MethodCallExpr");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cExpressionTypeAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cExpressionTypeLengthKeyword_0_0 = (Keyword)cExpressionTypeAssignment_0.eContents().get(0);
+		private final Assignment cMethodCallAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cMethodCallMethodCallParserRuleCall_1_0 = (RuleCall)cMethodCallAssignment_1.eContents().get(0);
+		
+		//MethodCallExpr Expr:
+		//	expressionType='length'
+		//	| methodCall=MethodCall
+		@Override public ParserRule getRule() { return rule; }
+		
+		//expressionType='length' | methodCall=MethodCall
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//expressionType='length'
+		public Assignment getExpressionTypeAssignment_0() { return cExpressionTypeAssignment_0; }
+		
+		//'length'
+		public Keyword getExpressionTypeLengthKeyword_0_0() { return cExpressionTypeLengthKeyword_0_0; }
+		
+		//methodCall=MethodCall
+		public Assignment getMethodCallAssignment_1() { return cMethodCallAssignment_1; }
+		
+		//MethodCall
+		public RuleCall getMethodCallMethodCallParserRuleCall_1_0() { return cMethodCallMethodCallParserRuleCall_1_0; }
 	}
 	public class MethodCallElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "demidov.projects.MiniJava.MethodCall");
@@ -1197,6 +1230,7 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final ProgramElements pProgram;
 	private final MainClassElements pMainClass;
+	private final MainMethodElements pMainMethod;
 	private final ClassDeclarationElements pClassDeclaration;
 	private final TypeElements pType;
 	private final VarDeclarationElements pVarDeclaration;
@@ -1211,6 +1245,7 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 	private final PointElements pPoint;
 	private final SquareBracketsElements pSquareBrackets;
 	private final PrimaryElements pPrimary;
+	private final MethodCallExprElements pMethodCallExpr;
 	private final MethodCallElements pMethodCall;
 	private final NumberValueElements pNumberValue;
 	
@@ -1225,6 +1260,7 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaTerminals = gaTerminals;
 		this.pProgram = new ProgramElements();
 		this.pMainClass = new MainClassElements();
+		this.pMainMethod = new MainMethodElements();
 		this.pClassDeclaration = new ClassDeclarationElements();
 		this.pType = new TypeElements();
 		this.pVarDeclaration = new VarDeclarationElements();
@@ -1239,6 +1275,7 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 		this.pPoint = new PointElements();
 		this.pSquareBrackets = new SquareBracketsElements();
 		this.pPrimary = new PrimaryElements();
+		this.pMethodCallExpr = new MethodCallExprElements();
 		this.pMethodCall = new MethodCallElements();
 		this.pNumberValue = new NumberValueElements();
 	}
@@ -1281,9 +1318,8 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//MainClass ClassDecl:
-	//	'class' name=ID '{' 'public' 'static' 'void' 'main' '(' 'String' '[' ']' ID ')' '{'
-	//	statement=Statement
-	//	'}'
+	//	'class' name=ID '{'
+	//	mainMethod=MainMethod
 	//	'}'
 	public MainClassElements getMainClassAccess() {
 		return pMainClass;
@@ -1291,6 +1327,18 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getMainClassRule() {
 		return getMainClassAccess().getRule();
+	}
+	
+	//MainMethod:
+	//	'public' 'static' 'void' 'main' '(' 'String' '[' ']' ID ')' '{'
+	//	statement=Statement
+	//	'}';
+	public MainMethodElements getMainMethodAccess() {
+		return pMainMethod;
+	}
+	
+	public ParserRule getMainMethodRule() {
+		return getMainMethodAccess().getRule();
 	}
 	
 	//ClassDeclaration ClassDecl:
@@ -1343,8 +1391,7 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 	//	'public' methodType=Type name=ID '(' (formalVarDeclarations+=Variable (',' formalVarDeclarations+=Variable)*)? ')'
 	//	'{'
 	//	localVarDeclarations+=VarDeclaration*
-	//	statements+=Statement*
-	//	'return' returnExpression=Expression ';'
+	//	statements+=Statement* ('return' returnExpression=Expression ';')?
 	//	'}'
 	public MethodDeclarationElements getMethodDeclarationAccess() {
 		return pMethodDeclaration;
@@ -1423,7 +1470,7 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Point Expr:
-	//	SquareBrackets ({Point.left=current} expressionType='.' right=SquareBrackets)*
+	//	SquareBrackets ({Point.left=current} expressionType='.' right=MethodCallExpr)*
 	public PointElements getPointAccess() {
 		return pPoint;
 	}
@@ -1449,15 +1496,24 @@ public class MiniJavaGrammarAccess extends AbstractGrammarElementFinder {
 	//	| expressionType='new' 'int' '[' expression=Expression ']'
 	//	| expressionType='new' type=Type '(' ')'
 	//	| expressionType='(' expression=Expression ')'
-	//	| expressionType='length'
-	//	| variable=[Variable] | methodCall=MethodCall
-	//	| number=NumberValue
+	//	| variable=[Variable] | number=NumberValue
 	public PrimaryElements getPrimaryAccess() {
 		return pPrimary;
 	}
 	
 	public ParserRule getPrimaryRule() {
 		return getPrimaryAccess().getRule();
+	}
+	
+	//MethodCallExpr Expr:
+	//	expressionType='length'
+	//	| methodCall=MethodCall
+	public MethodCallExprElements getMethodCallExprAccess() {
+		return pMethodCallExpr;
+	}
+	
+	public ParserRule getMethodCallExprRule() {
+		return getMethodCallExprAccess().getRule();
 	}
 	
 	//MethodCall:

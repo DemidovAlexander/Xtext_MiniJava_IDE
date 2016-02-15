@@ -86,6 +86,11 @@ public class MiniJavaAdapterFactory extends AdapterFactoryImpl
         return createClassDeclAdapter();
       }
       @Override
+      public Adapter caseMainMethod(MainMethod object)
+      {
+        return createMainMethodAdapter();
+      }
+      @Override
       public Adapter caseType(Type object)
       {
         return createTypeAdapter();
@@ -198,6 +203,21 @@ public class MiniJavaAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createClassDeclAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link demidov.projects.miniJava.MainMethod <em>Main Method</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see demidov.projects.miniJava.MainMethod
+   * @generated
+   */
+  public Adapter createMainMethodAdapter()
   {
     return null;
   }

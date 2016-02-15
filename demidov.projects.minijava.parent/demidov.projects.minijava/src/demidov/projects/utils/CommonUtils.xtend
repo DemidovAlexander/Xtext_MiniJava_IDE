@@ -94,7 +94,7 @@ class CommonUtils {
 			}
 		}
 		
-		return null;
+		return MiniJavaFactory.eINSTANCE.createType();
 	}
 	
 	def public static checkCompatibleClassTypes(ClassDecl targetClass, ClassDecl parameterClass) {

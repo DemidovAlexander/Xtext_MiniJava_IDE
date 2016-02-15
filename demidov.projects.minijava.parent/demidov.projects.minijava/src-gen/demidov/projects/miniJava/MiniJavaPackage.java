@@ -105,13 +105,13 @@ public interface MiniJavaPackage extends EPackage
   int CLASS_DECL__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Statement</b></em>' containment reference.
+   * The feature id for the '<em><b>Main Method</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_DECL__STATEMENT = 1;
+  int CLASS_DECL__MAIN_METHOD = 1;
 
   /**
    * The feature id for the '<em><b>Extended Class</b></em>' reference.
@@ -150,6 +150,34 @@ public interface MiniJavaPackage extends EPackage
   int CLASS_DECL_FEATURE_COUNT = 5;
 
   /**
+   * The meta object id for the '{@link demidov.projects.miniJava.impl.MainMethodImpl <em>Main Method</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see demidov.projects.miniJava.impl.MainMethodImpl
+   * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getMainMethod()
+   * @generated
+   */
+  int MAIN_METHOD = 2;
+
+  /**
+   * The feature id for the '<em><b>Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAIN_METHOD__STATEMENT = 0;
+
+  /**
+   * The number of structural features of the '<em>Main Method</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAIN_METHOD_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link demidov.projects.miniJava.impl.TypeImpl <em>Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -157,7 +185,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getType()
    * @generated
    */
-  int TYPE = 2;
+  int TYPE = 3;
 
   /**
    * The feature id for the '<em><b>Type Name</b></em>' attribute.
@@ -194,7 +222,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getVarDeclaration()
    * @generated
    */
-  int VAR_DECLARATION = 3;
+  int VAR_DECLARATION = 4;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -222,7 +250,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getVariable()
    * @generated
    */
-  int VARIABLE = 4;
+  int VARIABLE = 5;
 
   /**
    * The feature id for the '<em><b>Variable Type</b></em>' containment reference.
@@ -259,7 +287,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getMethod()
    * @generated
    */
-  int METHOD = 5;
+  int METHOD = 6;
 
   /**
    * The feature id for the '<em><b>Method Type</b></em>' containment reference.
@@ -332,7 +360,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getStatement()
    * @generated
    */
-  int STATEMENT = 6;
+  int STATEMENT = 7;
 
   /**
    * The feature id for the '<em><b>Statement Type</b></em>' attribute.
@@ -405,7 +433,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getExpr()
    * @generated
    */
-  int EXPR = 7;
+  int EXPR = 8;
 
   /**
    * The feature id for the '<em><b>Expression Type</b></em>' attribute.
@@ -453,22 +481,22 @@ public interface MiniJavaPackage extends EPackage
   int EXPR__VARIABLE = 4;
 
   /**
-   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPR__METHOD_CALL = 5;
-
-  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR__NUMBER = 6;
+  int EXPR__NUMBER = 5;
+
+  /**
+   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR__METHOD_CALL = 6;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -496,7 +524,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getMethodCall()
    * @generated
    */
-  int METHOD_CALL = 8;
+  int METHOD_CALL = 9;
 
   /**
    * The feature id for the '<em><b>Method</b></em>' reference.
@@ -533,7 +561,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getNumberValue()
    * @generated
    */
-  int NUMBER_VALUE = 9;
+  int NUMBER_VALUE = 10;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -561,7 +589,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 10;
+  int EXPRESSION = 11;
 
   /**
    * The feature id for the '<em><b>Expression Type</b></em>' attribute.
@@ -609,15 +637,6 @@ public interface MiniJavaPackage extends EPackage
   int EXPRESSION__VARIABLE = EXPR__VARIABLE;
 
   /**
-   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__METHOD_CALL = EXPR__METHOD_CALL;
-
-  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -625,6 +644,15 @@ public interface MiniJavaPackage extends EPackage
    * @ordered
    */
   int EXPRESSION__NUMBER = EXPR__NUMBER;
+
+  /**
+   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__METHOD_CALL = EXPR__METHOD_CALL;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -652,7 +680,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getAddition()
    * @generated
    */
-  int ADDITION = 11;
+  int ADDITION = 12;
 
   /**
    * The feature id for the '<em><b>Expression Type</b></em>' attribute.
@@ -700,15 +728,6 @@ public interface MiniJavaPackage extends EPackage
   int ADDITION__VARIABLE = EXPR__VARIABLE;
 
   /**
-   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADDITION__METHOD_CALL = EXPR__METHOD_CALL;
-
-  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -716,6 +735,15 @@ public interface MiniJavaPackage extends EPackage
    * @ordered
    */
   int ADDITION__NUMBER = EXPR__NUMBER;
+
+  /**
+   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION__METHOD_CALL = EXPR__METHOD_CALL;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -743,7 +771,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getMultiplication()
    * @generated
    */
-  int MULTIPLICATION = 12;
+  int MULTIPLICATION = 13;
 
   /**
    * The feature id for the '<em><b>Expression Type</b></em>' attribute.
@@ -791,15 +819,6 @@ public interface MiniJavaPackage extends EPackage
   int MULTIPLICATION__VARIABLE = EXPR__VARIABLE;
 
   /**
-   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MULTIPLICATION__METHOD_CALL = EXPR__METHOD_CALL;
-
-  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -807,6 +826,15 @@ public interface MiniJavaPackage extends EPackage
    * @ordered
    */
   int MULTIPLICATION__NUMBER = EXPR__NUMBER;
+
+  /**
+   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION__METHOD_CALL = EXPR__METHOD_CALL;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -834,7 +862,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getPoint()
    * @generated
    */
-  int POINT = 13;
+  int POINT = 14;
 
   /**
    * The feature id for the '<em><b>Expression Type</b></em>' attribute.
@@ -882,15 +910,6 @@ public interface MiniJavaPackage extends EPackage
   int POINT__VARIABLE = EXPR__VARIABLE;
 
   /**
-   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int POINT__METHOD_CALL = EXPR__METHOD_CALL;
-
-  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -898,6 +917,15 @@ public interface MiniJavaPackage extends EPackage
    * @ordered
    */
   int POINT__NUMBER = EXPR__NUMBER;
+
+  /**
+   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POINT__METHOD_CALL = EXPR__METHOD_CALL;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -925,7 +953,7 @@ public interface MiniJavaPackage extends EPackage
    * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getSquareBrackets()
    * @generated
    */
-  int SQUARE_BRACKETS = 14;
+  int SQUARE_BRACKETS = 15;
 
   /**
    * The feature id for the '<em><b>Expression Type</b></em>' attribute.
@@ -973,15 +1001,6 @@ public interface MiniJavaPackage extends EPackage
   int SQUARE_BRACKETS__VARIABLE = EXPR__VARIABLE;
 
   /**
-   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SQUARE_BRACKETS__METHOD_CALL = EXPR__METHOD_CALL;
-
-  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -989,6 +1008,15 @@ public interface MiniJavaPackage extends EPackage
    * @ordered
    */
   int SQUARE_BRACKETS__NUMBER = EXPR__NUMBER;
+
+  /**
+   * The feature id for the '<em><b>Method Call</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SQUARE_BRACKETS__METHOD_CALL = EXPR__METHOD_CALL;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1052,15 +1080,15 @@ public interface MiniJavaPackage extends EPackage
   EAttribute getClassDecl_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link demidov.projects.miniJava.ClassDecl#getStatement <em>Statement</em>}'.
+   * Returns the meta object for the containment reference '{@link demidov.projects.miniJava.ClassDecl#getMainMethod <em>Main Method</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Statement</em>'.
-   * @see demidov.projects.miniJava.ClassDecl#getStatement()
+   * @return the meta object for the containment reference '<em>Main Method</em>'.
+   * @see demidov.projects.miniJava.ClassDecl#getMainMethod()
    * @see #getClassDecl()
    * @generated
    */
-  EReference getClassDecl_Statement();
+  EReference getClassDecl_MainMethod();
 
   /**
    * Returns the meta object for the reference '{@link demidov.projects.miniJava.ClassDecl#getExtendedClass <em>Extended Class</em>}'.
@@ -1094,6 +1122,27 @@ public interface MiniJavaPackage extends EPackage
    * @generated
    */
   EReference getClassDecl_MethodDeclarations();
+
+  /**
+   * Returns the meta object for class '{@link demidov.projects.miniJava.MainMethod <em>Main Method</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Main Method</em>'.
+   * @see demidov.projects.miniJava.MainMethod
+   * @generated
+   */
+  EClass getMainMethod();
+
+  /**
+   * Returns the meta object for the containment reference '{@link demidov.projects.miniJava.MainMethod#getStatement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Statement</em>'.
+   * @see demidov.projects.miniJava.MainMethod#getStatement()
+   * @see #getMainMethod()
+   * @generated
+   */
+  EReference getMainMethod_Statement();
 
   /**
    * Returns the meta object for class '{@link demidov.projects.miniJava.Type <em>Type</em>}'.
@@ -1398,17 +1447,6 @@ public interface MiniJavaPackage extends EPackage
   EReference getExpr_Variable();
 
   /**
-   * Returns the meta object for the containment reference '{@link demidov.projects.miniJava.Expr#getMethodCall <em>Method Call</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Method Call</em>'.
-   * @see demidov.projects.miniJava.Expr#getMethodCall()
-   * @see #getExpr()
-   * @generated
-   */
-  EReference getExpr_MethodCall();
-
-  /**
    * Returns the meta object for the containment reference '{@link demidov.projects.miniJava.Expr#getNumber <em>Number</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1418,6 +1456,17 @@ public interface MiniJavaPackage extends EPackage
    * @generated
    */
   EReference getExpr_Number();
+
+  /**
+   * Returns the meta object for the containment reference '{@link demidov.projects.miniJava.Expr#getMethodCall <em>Method Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Method Call</em>'.
+   * @see demidov.projects.miniJava.Expr#getMethodCall()
+   * @see #getExpr()
+   * @generated
+   */
+  EReference getExpr_MethodCall();
 
   /**
    * Returns the meta object for the containment reference '{@link demidov.projects.miniJava.Expr#getLeft <em>Left</em>}'.
@@ -1593,12 +1642,12 @@ public interface MiniJavaPackage extends EPackage
     EAttribute CLASS_DECL__NAME = eINSTANCE.getClassDecl_Name();
 
     /**
-     * The meta object literal for the '<em><b>Statement</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Main Method</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CLASS_DECL__STATEMENT = eINSTANCE.getClassDecl_Statement();
+    EReference CLASS_DECL__MAIN_METHOD = eINSTANCE.getClassDecl_MainMethod();
 
     /**
      * The meta object literal for the '<em><b>Extended Class</b></em>' reference feature.
@@ -1623,6 +1672,24 @@ public interface MiniJavaPackage extends EPackage
      * @generated
      */
     EReference CLASS_DECL__METHOD_DECLARATIONS = eINSTANCE.getClassDecl_MethodDeclarations();
+
+    /**
+     * The meta object literal for the '{@link demidov.projects.miniJava.impl.MainMethodImpl <em>Main Method</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see demidov.projects.miniJava.impl.MainMethodImpl
+     * @see demidov.projects.miniJava.impl.MiniJavaPackageImpl#getMainMethod()
+     * @generated
+     */
+    EClass MAIN_METHOD = eINSTANCE.getMainMethod();
+
+    /**
+     * The meta object literal for the '<em><b>Statement</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MAIN_METHOD__STATEMENT = eINSTANCE.getMainMethod_Statement();
 
     /**
      * The meta object literal for the '{@link demidov.projects.miniJava.impl.TypeImpl <em>Type</em>}' class.
@@ -1861,20 +1928,20 @@ public interface MiniJavaPackage extends EPackage
     EReference EXPR__VARIABLE = eINSTANCE.getExpr_Variable();
 
     /**
-     * The meta object literal for the '<em><b>Method Call</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXPR__METHOD_CALL = eINSTANCE.getExpr_MethodCall();
-
-    /**
      * The meta object literal for the '<em><b>Number</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference EXPR__NUMBER = eINSTANCE.getExpr_Number();
+
+    /**
+     * The meta object literal for the '<em><b>Method Call</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR__METHOD_CALL = eINSTANCE.getExpr_MethodCall();
 
     /**
      * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
